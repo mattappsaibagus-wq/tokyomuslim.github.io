@@ -1,8 +1,8 @@
 # Tokyo Halal Guide
 
-A premium, zero-dependency static website for Muslim travelers in Tokyo, Osaka, Kyoto, and beyond. Features live astronomical prayer times, verified halal dining with interactive Google Maps, Japanese phrasebook, kanji label decoder, currency converter, 3-day itinerary, and a trip-planning concierge.
+A premium, zero-dependency static website for Muslim travelers in Tokyo, Osaka, Kyoto, and beyond. Features live astronomical prayer times with a 13-method calculator, verified halal dining with interactive Google Maps, Japanese phrasebook, kanji label decoder, currency converter, 3-day itinerary, and a trip-planning concierge.
 
-**Live site:** https://tokyomuslim.club/  
+**Live site:** https://tokyomuslim.club/
 **GitHub repo:** https://github.com/mattappsaibagus-wq/tokyomuslim.github.io
 
 ---
@@ -12,6 +12,7 @@ A premium, zero-dependency static website for Muslim travelers in Tokyo, Osaka, 
 | Feature | Description |
 |---------|-------------|
 | **Live Prayer Engine** | Astronomically-precise Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha for Tokyo, Osaka, Kyoto (solar declination + equation of time) with live countdown & active prayer highlighting |
+| **13 Worldwide Calculation Methods** | Muslim World League, ISNA, Egyptian, Umm al-Qura, Karachi, Dubai, Kuwait, KEMENAG, JAKIM, Diyanet, Shia Jafari, UOIF — switch to match your home convention |
 | **Halal Directory** | 18+ verified venues across Tokyo, Osaka, Kyoto, Kobe — A5 Wagyu, Ramen, Sushi, Mosques, Prayer Rooms, Airport facilities |
 | **Interactive Maps** | One-click Google Maps navigation, phone dialers, Japanese address copy-for-taxi |
 | **Phrasebook & Kanji Decoder** | 20+ show-to-staff Japanese cards + searchable ingredient kanji lookup (pork, lard, gelatin, mirin, emulsifiers, agar) |
@@ -20,6 +21,7 @@ A premium, zero-dependency static website for Muslim travelers in Tokyo, Osaka, 
 | **Contact Concierge** | Mailto-based form for private halal drivers, group packages, trip planning — works on static hosting |
 | **Multi-City** | City selector for prayer times (Tokyo / Osaka / Kyoto) |
 | **Light/Dark Mode** | System preference + manual toggle, persisted in localStorage |
+| **Accessibility** | Skip-link, universal `focus-visible`, `prefers-reduced-motion`, aria-labelled controls, keyboard-operable mobile menu |
 
 ---
 
@@ -28,6 +30,7 @@ A premium, zero-dependency static website for Muslim travelers in Tokyo, Osaka, 
 ```
 tokyo-muslim-guide/
 ├── index.html          # Single-file production site (all content + CSS + JS)
+├── verify.sh           # Integrity & replica health-check (SHA-256 + JS harness)
 ├── css/
 │   └── style.css       # Legacy design system (emerald & gold theme) — now deprecated
 ├── js/
@@ -77,6 +80,34 @@ Import the GitHub repo with "Other" framework preset (no build command, output d
 
 ---
 
+## 🌐 High-Availability & Replica Verification
+
+The site follows a **zero-build, zero-server** architecture: a single `index.html` served from multiple static hosts simultaneously. There is no build pipeline, no server-side logic, and no user data captured (analytics is the sole opt-in data stream).
+
+### Current Replica Status
+
+| Host | URL | Status | Notes |
+|------|-----|--------|-------|
+| **GitHub Pages + CDN** | https://tokyomuslim.club/ | ✔ Primary | Fastly global CDN, auto-HTTPS, CNAME verified |
+| **www alias** | https://www.tokyomuslim.club/ | → Redirects to root | 301 to `tokyomuslim.club` |
+| **Netlify Drop** | `rainbow-travesseiro-5c8ea7.netlify.app` | ⚠ Stale | Password-protected; refresh by re-dragging `index.html` onto https://app.netlify.com/drop |
+
+### Verifying Replicas
+
+```bash
+bash verify.sh
+```
+
+`verify.sh` compares the canonical `index.html` against every live replica using SHA-256 checksums and runs the prayer-engine JavaScript harness (234 ordering checks across all methods × cities × seasons). A byte-identical replica gets a ✔; a stale one gets a ⚠.
+
+### Adding a New Replica
+
+1. Push `index.html` to the new host (Cloudflare Pages, Vercel, Netlify, etc.)
+2. Add the URL to the `REPLICAS` array in `verify.sh`
+3. Run `bash verify.sh` — it will show ✔ if byte-identical to the canonical file
+
+---
+
 ## 🔧 Custom Domain & Subdomain Setup
 
 ### Current: `tokyomuslim.club` → GitHub Pages
@@ -104,7 +135,7 @@ The subdomain will be live in ~10–30 minutes with free SSL.
 
 ## 📊 Analytics (Add One to `<head>`)
 
-Uncomment **one** option in `index.html` (lines ~17–30):
+Uncomment **one** option in `index.html` (lines ~16–33):
 
 | Option | Privacy | Cost | Setup |
 |--------|---------|------|-------|
@@ -123,6 +154,7 @@ All content lives in `index.html` — edit directly:
 |---------|------------|
 | Venues (restaurants, mosques) | `data-category="mosque"` / `wagyu` / `ramen` / `sushi` |
 | Prayer cities | `const CITIES = {` |
+| Calculation methods | `const METHODS = {` |
 | Phrasebook cards | `class="phrase-card"` |
 | Kanji decoder items | `class="kanji-item"` |
 | Currency rates | `const RATES = {` |
@@ -134,6 +166,8 @@ All content lives in `index.html` — edit directly:
 ## 📜 Disclaimer
 
 Opening hours, halal certifications, and prayer-space availability change over time. This guide is maintained in good faith — **always verify with the venue before visiting**.
+
+Prayer times are astronomical estimates; the site provides multiple calculation methods but cannot replace the guidance of your local mosque or trusted Islamic authority.
 
 ---
 
@@ -147,6 +181,7 @@ Opening hours, halal certifications, and prayer-space availability change over t
 ## 🙏 Credits
 
 - Prayer time algorithm: NOAA Solar Calculations / Umm al-Qura Hijri approximation
+- Prayer time calculation methods: Based on internationally recognized conventions (MWL, ISNA, Umm al-Qura, JAKIM, KEMENAG, etc.)
 - Fonts: Google Fonts (Cormorant Garamond, Playfair Display, Plus Jakarta Sans, Noto Serif JP)
 - Icons: Unicode emoji (no external assets)
 - Inspired by the community at [Tokyo Muslim Club](https://tokyomuslim.club/)
