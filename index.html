@@ -467,8 +467,10 @@
 
     .widget-header {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 10px 14px;
       margin-bottom: 20px;
     }
 
@@ -537,6 +539,13 @@
       border: 1px solid var(--border);
       border-radius: 999px;
       padding: 6px 8px 6px 12px;
+    }
+
+    .widget-tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
     }
 
     .city-select-icon { font-size: 0.82rem; }
@@ -616,6 +625,53 @@
       gap: 6px;
       font-weight: 600;
       color: var(--gold);
+    }
+
+    .method-note {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.72rem;
+      line-height: 1.55;
+      color: var(--text-light);
+    }
+    .method-note strong { color: var(--gold); }
+
+    /* Universal keyboard focus for accessible navigation */
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    /* Skip link for keyboard & screen-reader users */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      z-index: 100;
+      background: var(--pine);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .skip-link:focus { left: 12px; }
+
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
     /* Section Common */
@@ -1538,6 +1594,22 @@
 
     @media (max-width: 680px) {
       .nav-menu { display: none; }
+      .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        position: absolute;
+        top: 100%;
+        left: 16px;
+        right: 16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow-lg);
+        z-index: 60;
+      }
       .mobile-menu-btn { display: flex; }
       .hero-title { font-size: 2.25rem; }
       .hero-highlights { grid-template-columns: 1fr 1fr; }
@@ -1554,6 +1626,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Skip to content (keyboard & screen-reader accessibility) -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Top Announcement & Live Time Status -->
   <div class="top-bar">
@@ -1603,7 +1678,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-editorial">
+  <section class="hero-editorial" id="main">
     <div class="container hero-grid">
       <div class="hero-text-content">
         <div class="hero-kicker">
@@ -1656,14 +1731,34 @@
             <h3><span>🕌</span> Prayer Times <span id="prayerCityName">Tokyo</span> (JST)</h3>
             <span class="widget-date" id="gregorianDateDisplay">Loading schedule...</span>
           </div>
-          <label class="city-select-wrap" title="Choose your city">
-            <span class="city-select-icon">📍</span>
-            <select id="citySelect" class="city-select" aria-label="Choose a city for prayer times">
-              <option value="tokyo" selected>Tokyo</option>
-              <option value="osaka">Osaka</option>
-              <option value="kyoto">Kyoto</option>
-            </select>
-          </label>
+          <div class="widget-tools">
+            <label class="city-select-wrap" title="Choose your city">
+              <span class="city-select-icon">📍</span>
+              <select id="citySelect" class="city-select" aria-label="Choose a city for prayer times">
+                <option value="tokyo" selected>Tokyo</option>
+                <option value="osaka">Osaka</option>
+                <option value="kyoto">Kyoto</option>
+              </select>
+            </label>
+            <label class="city-select-wrap" title="Choose prayer times calculation method">
+              <span class="city-select-icon">🧭</span>
+              <select id="methodSelect" class="city-select" aria-label="Choose prayer times calculation method">
+                <option value="std" selected>Standard (18° / 18°)</option>
+                <option value="mwl">Muslim World League</option>
+                <option value="isna">ISNA — North America</option>
+                <option value="egypt">Egyptian General Authority</option>
+                <option value="ummqura">Umm al-Qura — Makkah</option>
+                <option value="karachi">Karachi Univ. of Islamic Sciences</option>
+                <option value="dubai">Dubai (UAE)</option>
+                <option value="kuwait">Kuwait</option>
+                <option value="sihat">KEMENAG — Indonesia</option>
+                <option value="jakim">JAKIM — Malaysia &amp; Singapore</option>
+                <option value="diyanet">Diyanet — Türkiye</option>
+                <option value="jafari">Shia Ithna-Ashari (Jafari)</option>
+                <option value="uoif">UOIF — France</option>
+              </select>
+            </label>
+          </div>
         </div>
 
         <div class="next-prayer-box">
@@ -1708,6 +1803,8 @@
           <span id="qiblaDisplay">Qibla Bearing: <strong>293.4° WNW</strong></span>
           <span class="qibla-badge">🕋 Towards Makkah</span>
         </div>
+
+        <div class="method-note" id="methodNote">Prayer times follow the <strong>Standard (18° / 18°)</strong> convention — switch above to match your home calculation method. Times are astronomical estimates; always align with your local mosque.</div>
       </div>
     </div>
   </section>
@@ -3134,15 +3231,50 @@
       showToast(next === 'dark' ? 'Dark mode enabled' : 'Light mode enabled');
     });
 
+    // Mobile navigation toggle (opens the hidden nav-menu under 680px)
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.querySelector('.nav-menu');
+    if (mobileMenuBtn && navMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const open = navMenu.classList.toggle('open');
+        mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        mobileMenuBtn.setAttribute('aria-label', open ? 'Close mobile navigation' : 'Open mobile navigation');
+        mobileMenuBtn.textContent = open ? '✕' : '☰';
+      });
+      navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.textContent = '☰';
+      }));
+    }
+
     // ========================================================================
     // 2. PRAYER TIMES — Real-time JST astronomical engine (Tokyo / Osaka / Kyoto)
     //    Computes daily Fajr, Sunrise, Dhuhr, Asr, Maghrib and Isha from each
     //    city's coordinates using solar declination & equation of time.
     // ========================================================================
     const CITIES = {
-      tokyo: { name: 'Tokyo', lat: 35.6762, lon: 139.6503, tzOffset: 9, jstZone: 'Asia/Tokyo', fajrAngle: -18, ishaAngle: -18, qibla: '293.4° WNW' },
-      osaka: { name: 'Osaka', lat: 34.6937, lon: 135.5023, tzOffset: 9, jstZone: 'Asia/Tokyo', fajrAngle: -18, ishaAngle: -18, qibla: '289.6° WNW' },
-      kyoto: { name: 'Kyoto', lat: 35.0116, lon: 135.7681, tzOffset: 9, jstZone: 'Asia/Tokyo', fajrAngle: -18, ishaAngle: -18, qibla: '287.4° WNW' }
+      tokyo: { name: 'Tokyo', lat: 35.6762, lon: 139.6503, tzOffset: 9, jstZone: 'Asia/Tokyo', qibla: '293.4° WNW' },
+      osaka: { name: 'Osaka', lat: 34.6937, lon: 135.5023, tzOffset: 9, jstZone: 'Asia/Tokyo', qibla: '289.6° WNW' },
+      kyoto: { name: 'Kyoto', lat: 35.0116, lon: 135.7681, tzOffset: 9, jstZone: 'Asia/Tokyo', qibla: '287.4° WNW' }
+    };
+
+    // Calculation methods recognized by Muslims worldwide.
+    // Angles are degrees BELOW the horizon; ishaMinutes = fixed offset after Maghrib (Umm al-Qura, etc.).
+    const METHODS = {
+      std:      { name: 'Standard (18° / 18°)',                     fajr: 18,   isha: 18,       def: true },
+      mwl:      { name: 'Muslim World League',                      fajr: 18,   isha: 17 },
+      isna:     { name: 'ISNA — North America',                     fajr: 15,   isha: 15 },
+      egypt:    { name: 'Egyptian General Authority',               fajr: 19.5, isha: 17.5 },
+      ummqura:  { name: 'Umm al-Qura — Makkah',                     fajr: 18.5, ishaMinutes: 90 },
+      karachi:  { name: 'Univ. of Islamic Sciences, Karachi',       fajr: 18,   isha: 18 },
+      dubai:    { name: 'Dubai (UAE)',                              fajr: 18.2, isha: 18.2 },
+      kuwait:   { name: 'Kuwait',                                   fajr: 18,   isha: 17.5 },
+      sihat:    { name: 'KEMENAG — Indonesia',                      fajr: 20,   isha: 18 },
+      jakim:    { name: 'JAKIM — Malaysia & Singapore',             fajr: 20,   isha: 18 },
+      diyanet:  { name: 'Diyanet — Türkiye',                        fajr: 18,   isha: 17 },
+      jafari:   { name: 'Shia Ithna-Ashari (Jafari)',               fajr: 16,   isha: 14, maghribAngle: 4 },
+      uoif:     { name: 'UOIF — France',                            fajr: 12,   isha: 12 }
     };
 
     let currentCity = localStorage.getItem('tokyo_prayer_city') || 'tokyo';
@@ -3156,6 +3288,32 @@
         currentCity = citySelect.value;
         if (CITIES[currentCity]) {
           localStorage.setItem('tokyo_prayer_city', currentCity);
+          updatePrayerClock();
+        }
+      });
+    }
+
+    // --- Calculation-method selection (worldwide conventions) ---
+    const methodSelect = document.getElementById('methodSelect');
+    let currentMethod = localStorage.getItem('tokyo_prayer_method') || 'std';
+    if (!METHODS[currentMethod]) currentMethod = 'std';
+
+    const methodNoteEl = document.getElementById('methodNote');
+    function renderMethodCaption() {
+      if (!methodNoteEl) return;
+      const meth = METHODS[currentMethod] || METHODS.std;
+      methodNoteEl.innerHTML = 'Prayer times follow the <strong>' +
+        meth.name + '</strong> calculation method — switch above to match your home convention. Times are astronomical estimates; always align with your local mosque.';
+    }
+
+    if (methodSelect) {
+      methodSelect.value = currentMethod;
+      renderMethodCaption();
+      methodSelect.addEventListener('change', () => {
+        currentMethod = methodSelect.value;
+        if (METHODS[currentMethod]) {
+          localStorage.setItem('tokyo_prayer_method', currentMethod);
+          renderMethodCaption();
           updatePrayerClock();
         }
       });
@@ -3194,7 +3352,7 @@
       return pad(hh) + ':' + pad(mm);
     }
 
-    function prayTimesForCity(city, date) {
+    function prayTimesForCity(city, date, method) {
       const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
       const { eqTime, decl } = sunPosition(dayOfYear);
       const lat = toRadian(city.lat);
@@ -3208,19 +3366,23 @@
         return Math.acos(Math.max(-1, Math.min(1, cosine)));
       };
 
+      const m = method || METHODS.std;
       const sunAltitude = -0.833; // sunset/sunrise: center of sun 0.833° below horizon
-      const norm = m => ((m % 1440) + 1440) % 1440;
+      const maghribAltitude = m.maghribAngle != null ? -(m.maghribAngle) : sunAltitude;
+      const norm = mm => ((mm % 1440) + 1440) % 1440;
 
       // Solar noon (Dhuhr) as minutes past local midnight (JST = UTC+9)
       const dhuhrTime = (720 + 4 * city.lon / 15 - eqTime) % 1440;
 
       // Everything derives from normalized solar noon
       const noon = norm(dhuhrTime);
-      const maghrib = norm(noon + toDegree(cosHourAngle(sunAltitude)) / 15 * 60);
+      const maghrib = norm(noon + toDegree(cosHourAngle(maghribAltitude)) / 15 * 60);
       const asr = norm(noon + toDegree(cosHourAngle(15)) / 15 * 60);
-      const fajr = norm(noon - toDegree(cosHourAngle(city.fajrAngle)) / 15 * 60);
-      const isha = norm(noon + toDegree(cosHourAngle(city.ishaAngle)) / 15 * 60);
+      const fajr = norm(noon - toDegree(cosHourAngle(-m.fajr)) / 15 * 60);
       const sunrise = norm(noon - toDegree(cosHourAngle(sunAltitude)) / 15 * 60);
+      const isha = m.ishaMinutes != null
+        ? norm(maghrib + m.ishaMinutes)
+        : norm(noon + toDegree(cosHourAngle(-m.isha)) / 15 * 60);
 
       return { Fajr: fajr, Sunrise: sunrise, Dhuhr: noon, Asr: asr, Maghrib: maghrib, Isha: isha };
     }
@@ -3265,7 +3427,7 @@
           + Math.floor((367 * (gm - 2 - 12 * Math.floor((gm - 14) / 12))) / 12)
           - Math.floor((3 * Math.floor((gy + 4900 + Math.floor((gm - 14) / 12)) / 100)) / 4)
           + gd - 32075;
-        const l = jd - 1948440 + 10632;
+        let l = jd - 1948440 + 10632;
         const n = Math.floor((l - 1) / 10631);
         l = l - 10631 * n + 354;
         const j = Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719) + Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
@@ -3278,7 +3440,7 @@
       }
 
       // Compute today's prayer schedule
-      const t = prayTimesForCity(city, cityNow);
+      const t = prayTimesForCity(city, cityNow, METHODS[currentMethod] || METHODS.std);
       const schedule = [
         { name: 'Fajr (فجر)',    id: 'slotFajr',    timeId: 'fajrTimeVal',    h: t.Fajr },
         { name: 'Sunrise',       id: 'slotSunrise', timeId: 'sunriseTimeVal', h: t.Sunrise },
