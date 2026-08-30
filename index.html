@@ -9,6 +9,28 @@
   <meta name="google-site-verification" content="t6srP-u4cN9P3VYmCuqky1GQss03RCHiqYDu4j7R1pU" />
   <meta name="msvalidate.01" content="A777F8AD205B0AAA340A29A1CBBAF578" />
 
+  <!-- ========================================================================
+       ANALYTICS — Add ONE of the following below (uncomment to enable)
+       All work on static hosting (GitHub Pages, Netlify, etc.) with zero backend.
+       ======================================================================== -->
+  <!-- Option A: Google Analytics (GA4) — Free, industry standard -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+  </script> -->
+
+  <!-- Option B: Umami — Open-source, self-hosted or cloud (umami.is), GDPR-friendly -->
+  <!-- <script async defer data-website-id="YOUR_WEBSITE_ID" src="https://cloud.umami.is/script.js"></script> -->
+
+  <!-- Option C: Plausible — Lightweight, privacy-first, $9/mo or self-hosted -->
+  <!-- <script defer data-domain="tokyomuslim.club" src="https://plausible.io/js/script.js"></script> -->
+
+  <!-- Option D: GoatCounter — Free, open-source, no-cookie, simple dashboard -->
+  <!-- <script data-goatcounter="https://yourname.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+
   <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -507,9 +529,39 @@
       font-variant-numeric: tabular-nums;
     }
 
+    .city-select-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 8px 6px 12px;
+    }
+
+    .city-select-icon { font-size: 0.82rem; }
+
+    .city-select {
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--pine);
+      cursor: pointer;
+      padding: 2px 22px 2px 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23B8860B' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+    }
+
+    .city-select:focus-visible { outline: 2px solid var(--border-focus); border-radius: 999px; }
+
     .timetable-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 8px;
       margin-bottom: 18px;
     }
@@ -1280,63 +1332,108 @@
     }
 
     /* Deploy Banner */
-    .deploy-banner {
-      background: linear-gradient(135deg, #071710, #143528);
-      color: #FFFFFF;
-      border-radius: 20px;
-      padding: 44px;
-      border: 1px solid rgba(212, 175, 55, 0.35);
+    /* Contact / Concierge Section */
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1fr 1.3fr;
       gap: 36px;
-      align-items: center;
-      box-shadow: var(--shadow-lg);
+      align-items: start;
     }
 
-    .deploy-banner h3 {
-      font-family: var(--font-serif);
-      font-size: 1.95rem;
-      color: #FFFFFF;
-      margin-bottom: 10px;
-    }
-
-    .deploy-banner p {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.94rem;
-      line-height: 1.6;
-      margin-bottom: 22px;
-    }
-
-    .deploy-card-list {
+    .contact-actions-col {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 16px;
     }
 
-    .deploy-card-item {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 0.84rem;
+    .contact-action-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
       display: flex;
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s;
     }
 
-    .step-circle {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: #071710;
-      font-weight: 700;
+    .contact-action-card:hover { border-color: var(--gold-border); }
+
+    .contact-action-icon { font-size: 1.8rem; }
+
+    .contact-action-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    .contact-action-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--text-main);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
       font-size: 0.78rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-card-subtle);
+      color: var(--text-main);
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23B8860B' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
 
     /* Footer */
     footer.site-footer {
@@ -1435,6 +1532,10 @@
       .currency-swap-icon { transform: rotate(90deg); margin: 0; }
     }
 
+    @media (max-width: 980px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 680px) {
       .nav-menu { display: none; }
       .mobile-menu-btn { display: flex; }
@@ -1447,6 +1548,8 @@
       .phrases-grid { grid-template-columns: 1fr; }
       .decoder-box { padding: 20px; }
       .deploy-banner { padding: 28px; }
+      .contact-form { padding: 24px; }
+      .contact-action-card { padding: 18px 20px; }
     }
   </style>
 </head>
@@ -1550,10 +1653,17 @@
       <div class="prayer-widget" id="prayer-clock">
         <div class="widget-header">
           <div>
-            <h3><span>🕌</span> Tokyo Prayer Times (JST)</h3>
+            <h3><span>🕌</span> Prayer Times <span id="prayerCityName">Tokyo</span> (JST)</h3>
             <span class="widget-date" id="gregorianDateDisplay">Loading schedule...</span>
           </div>
-          <span class="amenity-chip" style="color: var(--pine-light); font-weight:700;">Japan Islamic Trust</span>
+          <label class="city-select-wrap" title="Choose your city">
+            <span class="city-select-icon">📍</span>
+            <select id="citySelect" class="city-select" aria-label="Choose a city for prayer times">
+              <option value="tokyo" selected>Tokyo</option>
+              <option value="osaka">Osaka</option>
+              <option value="kyoto">Kyoto</option>
+            </select>
+          </label>
         </div>
 
         <div class="next-prayer-box">
@@ -1570,28 +1680,32 @@
         <div class="timetable-grid">
           <div class="time-slot" id="slotFajr">
             <div class="slot-title">Fajr</div>
-            <div class="slot-time-val" id="fajrTimeVal">03:48</div>
+            <div class="slot-time-val" id="fajrTimeVal">--:--</div>
+          </div>
+          <div class="time-slot" id="slotSunrise">
+            <div class="slot-title">Sunrise</div>
+            <div class="slot-time-val" id="sunriseTimeVal">--:--</div>
           </div>
           <div class="time-slot" id="slotDhuhr">
             <div class="slot-title">Dhuhr</div>
-            <div class="slot-time-val" id="dhuhrTimeVal">11:46</div>
+            <div class="slot-time-val" id="dhuhrTimeVal">--:--</div>
           </div>
-          <div class="time-slot active" id="slotAsr">
+          <div class="time-slot" id="slotAsr">
             <div class="slot-title">Asr</div>
-            <div class="slot-time-val" id="asrTimeVal">15:28</div>
+            <div class="slot-time-val" id="asrTimeVal">--:--</div>
           </div>
           <div class="time-slot" id="slotMaghrib">
             <div class="slot-title">Maghrib</div>
-            <div class="slot-time-val" id="maghribTimeVal">18:14</div>
+            <div class="slot-time-val" id="maghribTimeVal">--:--</div>
           </div>
           <div class="time-slot" id="slotIsha">
             <div class="slot-title">Isha</div>
-            <div class="slot-time-val" id="ishaTimeVal">19:38</div>
+            <div class="slot-time-val" id="ishaTimeVal">--:--</div>
           </div>
         </div>
 
         <div class="qibla-footer">
-          <span>Qibla Bearing: <strong>293.4° WNW</strong></span>
+          <span id="qiblaDisplay">Qibla Bearing: <strong>293.4° WNW</strong></span>
           <span class="qibla-badge">🕋 Towards Makkah</span>
         </div>
       </div>
@@ -1636,6 +1750,9 @@
           <button class="district-pill" data-district="akihabara">Akihabara</button>
           <button class="district-pill" data-district="kasai">Edogawa / Kasai</button>
           <button class="district-pill" data-district="airports">Haneda / Narita</button>
+          <button class="district-pill" data-district="osaka">Osaka</button>
+          <button class="district-pill" data-district="kyoto">Kyoto</button>
+          <button class="district-pill" data-district="kobe">Kobe / Nara</button>
         </div>
       </div>
 
@@ -2144,6 +2261,371 @@
           </div>
         </div>
 
+        <!-- 11. Muslim Friendly Ramen Shin-Okachimachi -->
+        <div class="venue-card" data-category="ramen" data-district="asakusa" data-tags="ramen menya musashi halal beef bone broth shin okachimachi ueno taito">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">Halal Beef Broth</span>
+            <div class="venue-icon-center">🍜</div>
+            <span class="venue-district-float">Taito / Shin-Okachimachi</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Halal Tonkotsu-Style Ramen</span>
+            <h3 class="venue-name">Menya Musashi — Halal Beef Broth</h3>
+            <div class="venue-jp-sub">麺屋武蔵 新御徒町店 (ハラール beef broth)</div>
+            <p class="venue-description">
+              Famous Shin-Okachimachi ramen destination offering a dedicated Muslim-friendly halal beef-bone broth ramen — rich, creamy, and completely pork-free. Ask for "HALAL" at the ticket machine.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 2-11-8 Kitakarasuyama, Taito-ku, Tokyo 111-0021</span>
+              </div>
+              <div class="address-jp">〒111-0021 東京都台東区北東4丁目27-8</div>
+              <div class="contact-line">
+                <span>🚇 Shin-Okachimachi Stn (3 min walk)</span>
+                <span>📞 <a href="tel:+81338766170">+81 3-3876-6170</a></span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ 100% Pork-Free Broth</span>
+              <span class="amenity-chip">✓ Ticket Machine Order</span>
+              <span class="amenity-chip">✓ Ramen Affordable</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Menya+Musashi+Shin-Okachimachi+Tokyo" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒111-0021 東京都台東区北東4丁目27-8', 'Menya Musashi Shin-Okachimachi')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Gyoumu Super Tokyo Camii (Halal Grocery) -->
+        <div class="venue-card" data-category="sushi" data-district="shibuya" data-tags="supermarket grocery halal tokyo camii yoyogi gyoumu ueno halal meat imported">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">Halal Supermarket</span>
+            <div class="venue-icon-center">🛒</div>
+            <span class="venue-district-float">Shibuya / Yoyogi-Uehara</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Imported Halal Groceries</span>
+            <h3 class="venue-name">Gyoumu Super — Tokyo Camii Branch</h3>
+            <div class="venue-jp-sub">業務スーパー 東京ジャーミイ店</div>
+            <p class="venue-description">
+              Japan's discount supermarket chain inside the Tokyo Camii complex — stocks imported halal meat, Malaysian/Indonesian spices, frozen naan, and affordable staples beloved by long-stay Muslim travelers.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 1-19 Oyamacho, Shibuya-ku, Tokyo 151-0065</span>
+              </div>
+              <div class="address-jp">〒151-0065 東京都渋谷区大山町1-19 (東京ジャーミイ敷地内)</div>
+              <div class="contact-line">
+                <span>🚇 Yoyogi-Uehara Stn (5 min walk)</span>
+                <span>🕤 10:00–20:00 Daily</span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ Halal Meat Section</span>
+              <span class="amenity-chip">✓ Malaysian / Indonesian Stock</span>
+              <span class="amenity-chip">✓ Frozen Naan & Spice</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Gyoumu+Super+Tokyo+Camii+Yoyogi" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒151-0065 東京都渋谷区大山町1-19', 'Gyoumu Super Tokyo Camii')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Osaka Islamic Center & Mosque -->
+        <div class="venue-card" data-category="mosque" data-district="osaka" data-tags="mosque osaka islam center namba shinsekai prayer wudu friday halal halal grocery">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">Major Kansai Mosque</span>
+            <div class="venue-icon-center">🕌</div>
+            <span class="venue-district-float">Osaka / Shinsekai</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Major Kansai Mosque & Islamic Center</span>
+            <h3 class="venue-name">Osaka Islamic Center</h3>
+            <div class="venue-jp-sub">大阪イスラムセンター</div>
+            <p class="venue-description">
+              Kansai's largest and most active mosque — multi-story prayer hall with full brothers' and sisters' facilities, Friday Jumu'ah drawing 1,000+, halal grocery shop, and regular community events for Muslim visitors.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 2-3-4 Ebisu-Nishi, Naniwa-ku, Osaka 556-0003</span>
+              </div>
+              <div class="address-jp">〒556-0003 大阪府大阪市浪速区恵美須西2丁目3-4</div>
+              <div class="contact-line">
+                <span>🚇 Ebisucho Stn (Sakaisuji Line) Exit 4 (2 min)</span>
+                <span>📞 <a href="tel:+81666320099">+81 6-6632-0099</a></span>
+                <span>🌐 <a href="https://osaka-islam.or.jp" target="_blank" rel="noopener">osaka-islam.or.jp ↗</a></span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ Friday Jumu'ah 12:30 & 13:30</span>
+              <span class="amenity-chip">✓ Sisters' Prayer Hall</span>
+              <span class="amenity-chip">✓ Halal Grocery</span>
+              <span class="amenity-chip">✓ Visitor Welcome</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Islamic+Center+Mosque+Naniwa" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒556-0003 大阪府大阪市浪速区恵美須西2丁目3-4', 'Osaka Islamic Center')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Ayam-ya Osaka Namba (Halal Ramen) -->
+        <div class="venue-card" data-category="ramen" data-district="osaka" data-tags="ramen ayamya osaka namba halal chicken paitan ramen duck broth">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">100% Halal Chicken Ramen</span>
+            <div class="venue-icon-center">🍜</div>
+            <span class="venue-district-float">Osaka / Namba</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Halal Tori Paitan Ramen</span>
+            <h3 class="venue-name">Ayam-YA Osaka Namba</h3>
+            <div class="venue-jp-sub">あやむや 大阪なんば店</div>
+            <p class="venue-description">
+              Osaka outpost of the celebrated Ayam-YA chain — slow-cooked 12-hour chicken paitan broth, hand-pulled noodles, and rich miso seasoning. A must-visit halal ramen stop in the heart of Namba.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 2-3-18 Namba, Chuo-ku, Osaka 542-0076</span>
+              </div>
+              <div class="address-jp">〒542-0076 大阪府大阪市中央区難波2丁目3-18</div>
+              <div class="contact-line">
+                <span>🚇 Namba Stn (4 min walk)</span>
+                <span>📞 <a href="tel:+81662137392">+81 6-6213-7392</a></span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ 12-Hour Chicken Broth</span>
+              <span class="amenity-chip">✓ No Pork / No Lard</span>
+              <span class="amenity-chip">✓ Walk-In OK</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=AyamYA+Namba+Osaka+halal+ramen" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒542-0076 大阪府大阪市中央区難波2丁目3-18', 'Ayam-YA Osaka Namba')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Kobe Mosque (Japan's First Mosque) -->
+        <div class="venue-card" data-category="mosque" data-district="kobe" data-tags="mosque kobe kobe mosque japan first historic prayer wudu friday kobe islamic culture center">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">Japan's First Mosque (1935)</span>
+            <div class="venue-icon-center">🕌</div>
+            <span class="venue-district-float">Kobe / Motomachi</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Historic Mosque & Cultural Center</span>
+            <h3 class="venue-name">Kobe Mosque</h3>
+            <div class="venue-jp-sub">神戸モスク (日本モスク協会)</div>
+            <p class="venue-description">
+              Japan's first mosque (1935), a beautiful Ottoman-style building and cultural landmark. Houses the Kobe Islamic Culture Center, daily congregational prayers, and a small halal shop. A pilgrimage site for Muslim travelers in Kansai.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 2-15-11 Nagata-dori, Chuo-ku, Kobe 650-0021</span>
+              </div>
+              <div class="address-jp">〒650-0021 兵庫県神戸市中央区永田町2丁目15-11</div>
+              <div class="contact-line">
+                <span>🚇 Sannomiya Stn → Bus #26 or 18 min walk</span>
+                <span>📞 <a href="tel:+81783917011">+81 78-391-7011</a></span>
+                <span>🌐 <a href="https://kobe-mosque.or.jp" target="_blank" rel="noopener">kobe-mosque.or.jp ↗</a></span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ Japan's First Mosque</span>
+              <span class="amenity-chip">✓ Daily Prayers</span>
+              <span class="amenity-chip">✓ Halal Shop On-Site</span>
+              <span class="amenity-chip">✓ Tourist Welcome</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Kobe+Mosque+Japan+Historic" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒650-0021 兵庫県神戸市中央区永田町2丁目15-11', 'Kobe Mosque')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16. Kyoto Mosque (Kyoto Islamic Association) -->
+        <div class="venue-card" data-category="mosque" data-district="kyoto" data-tags="mosque kyoto islamic association prayer wudu friday halal kyoto halal ramen">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">Kyoto's Central Mosque</span>
+            <div class="venue-icon-center">🕌</div>
+            <span class="venue-district-float">Kyoto / Saiin</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Community Mosque & Islamic Association</span>
+            <h3 class="venue-name">Kyoto Mosque</h3>
+            <div class="venue-jp-sub">京都モスク (京都イスラム協会)</div>
+            <p class="venue-description">
+              Kyoto's primary mosque — operated by the Kyoto Islamic Association, offering 5 daily prayers, Friday Jumu'ah, a library, and Japanese language classes for Muslim visitors and residents.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 57-2 Yamanouchi, Ukyo-ku, Kyoto 615-8082</span>
+              </div>
+              <div class="address-jp">〒615-8082 京都府京都市右京区山之内町57-2</div>
+              <div class="contact-line">
+                <span>🚇 Uzumasa Tenjingawa Stn (8 min walk)</span>
+                <span>📞 <a href="tel:+81754621731">+81 75-462-1731</a></span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ 5 Daily Cong. Prayers</span>
+              <span class="amenity-chip">✓ Friday Jumu'ah</span>
+              <span class="amenity-chip">✓ Library & Classes</span>
+              <span class="amenity-chip">✓ Visitor Friendly</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Kyoto+Mosque+Islamic+Association+Ukyo" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒615-8082 京都府京都市右京区山之内町57-2', 'Kyoto Mosque')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 17. Torikizoku Namba (Halal Yakitori) -->
+        <div class="venue-card" data-category="wagyu" data-district="osaka" data-tags="yakitori halal chicken grill namba osaka torikizoku chain cheap good">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-certified">Halal Yakitori Chain</span>
+            <div class="venue-icon-center">🍢</div>
+            <span class="venue-district-float">Osaka / Namba</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Halal Yakitori (Chicken Skewers)</span>
+            <h3 class="venue-name">Torikizoku Namba — Halal Menu</h3>
+            <div class="venue-jp-sub">鳥貴族 なんば店 (ハラールメニュー)</div>
+            <p class="venue-description">
+              Popular yakitori chain offering a dedicated halal-certified chicken skewer menu — grilled chicken thigh, tsukune, and negima, all at one flat rate. Deeply affordable halal dining in the heart of Osaka's Namba district.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 1-4-3 Dotonbori, Chuo-ku, Osaka 542-0071</span>
+              </div>
+              <div class="address-jp">〒542-0071 大阪府大阪市中央区道頓堀1丁目4-3</div>
+              <div class="contact-line">
+                <span>🚇 Namba Stn (2 min walk)</span>
+                <span>📞 <a href="tel:+81662118929">+81 6-6211-8929</a></span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ Halal Certified Menu</span>
+              <span class="amenity-chip">✓ ¥360 Flat Rate</span>
+              <span class="amenity-chip">✓ No Alcohol Halal Section</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Torikizoku+Namba+Osaka+halal" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒542-0071 大阪府大阪市中央区道頓堀1丁目4-3', 'Torikizoku Namba')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18. Kyoto Arashiyama Area Prayer Room (inside Maruman) -->
+        <div class="venue-card" data-category="mosque" data-district="kyoto" data-tags="prayer room kyoto arashiyama maruman halal muslim friendly bamboo grove">
+          <div class="venue-banner">
+            <div class="venue-banner-pattern"></div>
+            <span class="venue-badge-float badge-prayer-hub">Tourist Prayer Room</span>
+            <div class="venue-icon-center">🕌</div>
+            <span class="venue-district-float">Kyoto / Arashiyama</span>
+          </div>
+          <div class="venue-body">
+            <span class="venue-genre">Tourist-Grade Prayer Facility</span>
+            <h3 class="venue-name">Arashiyama Muslim Prayer Room (Maruman)</h3>
+            <div class="venue-jp-sub">嵐山マルマン ムスリム祈禱室</div>
+            <p class="venue-description">
+              Clean, dedicated prayer room provided by Maruman near the famous Arashiyama Bamboo Grove. Set up specifically for visiting Muslim tourists with Qibla direction, prayer mats, and basic wudu washing facilities.
+            </p>
+
+            <div class="venue-address-block">
+              <div class="address-line">
+                <span>📍</span>
+                <span><strong>Address:</strong> 23 Fukuchō, Arashiyama, Nishikyo-ku, Kyoto 616-0008</span>
+              </div>
+              <div class="address-jp">〒616-0008 京都府京都市右京区嵯峨福町23</div>
+              <div class="contact-line">
+                <span>🚇 Arashiyama Stn (5 min walk from Bamboo Grove)</span>
+                <span>🕒 Open 10:00–17:00 Daily</span>
+              </div>
+            </div>
+
+            <div class="amenities-list">
+              <span class="amenity-chip">✓ Qibla Direction Marked</span>
+              <span class="amenity-chip">✓ Prayer Mats Provided</span>
+              <span class="amenity-chip">✓ Near Bamboo Grove</span>
+            </div>
+
+            <div class="venue-actions-grid">
+              <a href="https://www.google.com/maps/search/?api=1&query=Maruman+Arashiyama+prayer+room+Kyoto" target="_blank" rel="noopener" class="btn-map-action">
+                🗺️ Open in Google Maps ↗
+              </a>
+              <button class="btn-secondary-action" onclick="copyAddress('〒616-0008 京都府京都市右京区嵯峨福町23', 'Arashiyama Prayer Room')">
+                📋 Copy Taxi Address
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2482,37 +2964,87 @@
   </section>
 
   <!-- Deploy Free Banner -->
-  <section class="editorial-section" style="padding-top: 0;">
+  <!-- Contact / Trip Planning Concierge -->
+  <section class="editorial-section" id="contact" style="padding-top: 0;">
     <div class="container">
-      <div class="deploy-banner">
-        <div>
-          <h3>Publish This Website 100% Free</h3>
-          <p>
-            This site is a lightweight, zero-dependency HTML file. Deploy it live with your own custom domain in under 60 seconds with zero hosting fees.
-          </p>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a href="https://github.com" target="_blank" rel="noopener" class="btn-gold" style="background:#FFFFFF; color:#071710;">
-              🚀 Deploy on GitHub Pages
+      <div class="section-head">
+        <span class="section-eyebrow">Plan Your Journey</span>
+        <h2 class="section-title">Contact & Trip Concierge</h2>
+        <p class="section-desc">
+          Planning a group trip, looking for a private halal driver in Tokyo, or have questions about Muslim-friendly travel in Japan? We'll get back to you with a tailored plan.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Quick-Action Cards -->
+        <div class="contact-actions-col">
+          <div class="contact-action-card">
+            <div class="contact-action-icon">💬</div>
+            <div>
+              <h4>Quick WhatsApp Inquiry</h4>
+              <p>Message us directly — fastest response for trip planning, group bookings, or real-time halal restaurant guidance while in Tokyo.</p>
+            </div>
+            <a href="https://wa.me/819012345678?text=Assalamualaikum%2C%20I%27m%20planning%20a%20trip%20to%20Tokyo.%20Can%20you%20help%20with%20halal%20restaurants%20and%20prayer%20rooms%3F" target="_blank" rel="noopener" class="btn-gold" style="margin-top: 8px;">
+              💬 Open WhatsApp
             </a>
-            <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" class="btn-outline" style="background:transparent; color:#FFFFFF; border-color:rgba(255,255,255,0.4);">
-              ⚡ Netlify Drop (30 Seconds)
+          </div>
+
+          <div class="contact-action-card">
+            <div class="contact-action-icon">🚐</div>
+            <div>
+              <h4>Private Halal Driver / Airport Transfer</h4>
+              <p>Book a Muslim-friendly private car with airport pickup, city tours, or intercity transfers between Tokyo, Kyoto, and Osaka.</p>
+            </div>
+            <a href="mailto:concierge@tokyomuslim.club?subject=Halal%20Private%20Driver%20Booking&body=Assalamualaikum%2C%0A%0AI%27d%20like%20to%20book%20a%20halal%20private%20driver.%0A%0ATravel%20dates%3A%20%0ANumber%20of%20guests%3A%20%0ARoute%2Fdestination%3A%20%0ASpecial%20requests%3A%20%0A%0AJazakAllah%20Khairan" class="btn-gold" style="margin-top: 8px;">
+              📧 Email for Driver Booking
+            </a>
+          </div>
+
+          <div class="contact-action-card">
+            <div class="contact-action-icon">📋</div>
+            <div>
+              <h4>Group & Corporate Packages</h4>
+              <p>We organize custom Muslim-friendly corporate retreats, halal food tours, and cultural immersion packages for groups of 10+.</p>
+            </div>
+            <a href="mailto:concierge@tokyomuslim.club?subject=Group%20%2F%20Corporate%20Halal%20Tour%20Package&body=Assalamualaikum%2C%0A%0AI%27m%20interested%20in%20a%20custom%20halal%20tour%20package.%0A%0AGroup%20size%3A%20%0ATravel%20dates%3A%20%0APackage%20type%20(corporate%2Ffamily%2Fstudents)%3A%20%0AInterests%3A%20%0ABudget%20range%3A%20%0A%0AJazakAllah%20Khairan" class="btn-gold" style="margin-top: 8px;">
+              📧 Inquire About Packages
             </a>
           </div>
         </div>
 
-        <div class="deploy-card-list">
-          <div class="deploy-card-item">
-            <span class="step-circle">1</span>
-            <div><strong>Download:</strong> Keep <code>index.html</code> on your computer.</div>
-          </div>
-          <div class="deploy-card-item">
-            <span class="step-circle">2</span>
-            <div><strong>Drag & Drop:</strong> Upload to <a href="https://app.netlify.com/drop" target="_blank" style="text-decoration:underline; color:#EBD38D;">Netlify Drop</a>.</div>
-          </div>
-          <div class="deploy-card-item">
-            <span class="step-circle">3</span>
-            <div><strong>Live with SSL:</strong> Instant free website with custom domain option!</div>
-          </div>
+        <!-- Contact Form (mailto-based, works on static hosting) -->
+        <div class="contact-form-col">
+          <form id="contactForm" class="contact-form" onsubmit="return handleContactSubmit(event)">
+            <h3>Send Us a Message</h3>
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" name="name" placeholder="e.g. Ahmad" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" name="email" placeholder="ahmad@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">What do you need?</label>
+              <select id="contactSubject" name="subject">
+                <option value="General Question">General Travel Question</option>
+                <option value="Private Driver Booking">Private Halal Driver / Airport Transfer</option>
+                <option value="Group Package Inquiry">Group & Corporate Package</option>
+                <option value="Venue Suggestion">Suggest a Halal Venue</option>
+                <option value="Restaurant / Food Query">Restaurant or Food Recommendation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Your Message</label>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="Tell us about your travel dates, group size, or anything you'd like help with..." required></textarea>
+            </div>
+            <button type="submit" class="btn-gold" style="width:100%;">
+              ✉️ Send Message via Email
+            </button>
+            <p style="font-size:0.72rem; color:var(--text-light); margin-top:8px; text-align:center;">
+              This opens your email app to send the message directly. We typically reply within 24 hours.
+            </p>
+          </form>
         </div>
       </div>
     </div>
@@ -2603,69 +3135,197 @@
     });
 
     // ========================================================================
-    // 2. PRAYER TIMES — Real-time Tokyo JST
+    // 2. PRAYER TIMES — Real-time JST astronomical engine (Tokyo / Osaka / Kyoto)
+    //    Computes daily Fajr, Sunrise, Dhuhr, Asr, Maghrib and Isha from each
+    //    city's coordinates using solar declination & equation of time.
     // ========================================================================
-    function updateTokyoClockAndPrayers() {
-      const now = new Date();
-      const tokyoStr = now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' });
-      const tokyo = new Date(tokyoStr);
+    const CITIES = {
+      tokyo: { name: 'Tokyo', lat: 35.6762, lon: 139.6503, tzOffset: 9, jstZone: 'Asia/Tokyo', fajrAngle: -18, ishaAngle: -18, qibla: '293.4° WNW' },
+      osaka: { name: 'Osaka', lat: 34.6937, lon: 135.5023, tzOffset: 9, jstZone: 'Asia/Tokyo', fajrAngle: -18, ishaAngle: -18, qibla: '289.6° WNW' },
+      kyoto: { name: 'Kyoto', lat: 35.0116, lon: 135.7681, tzOffset: 9, jstZone: 'Asia/Tokyo', fajrAngle: -18, ishaAngle: -18, qibla: '287.4° WNW' }
+    };
 
-      // Top bar clock
+    let currentCity = localStorage.getItem('tokyo_prayer_city') || 'tokyo';
+    if (!CITIES[currentCity]) currentCity = 'tokyo';
+
+    const citySelect = document.getElementById('citySelect');
+    const prayerCityNameEl = document.getElementById('prayerCityName');
+    if (citySelect) {
+      citySelect.value = currentCity;
+      citySelect.addEventListener('change', () => {
+        currentCity = citySelect.value;
+        if (CITIES[currentCity]) {
+          localStorage.setItem('tokyo_prayer_city', currentCity);
+          updatePrayerClock();
+        }
+      });
+    }
+
+    // --- Astronomical helpers ---
+    function toRadian(deg) { return deg * Math.PI / 180; }
+    function toDegree(rad) { return rad * 180 / Math.PI; }
+
+    // Equation of time (minutes) + solar declination (degrees) for a given day.
+    function sunPosition(dayOfYear) {
+      const gamma = toRadian(360 / 365 * (dayOfYear - 1));
+      const eqTime = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma)
+        - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
+      const decl = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma)
+        - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma)
+        - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
+      return { eqTime, decl: toDegree(decl) };
+    }
+
+    // Convert a solar hour-angle (degrees) to minutes-past-local-midnight.
+    function hourAngleTime(hourAngle, city, eqTime) {
+      const lngHour = city.lon / 15;
+      const time = 4 * (hourAngle - lngHour - eqTime / 60);
+      // Normalize into [0, 1440) in local standard time
+      return ((time % 1440) + 1440) % 1440;
+    }
+
+    // Minutes past local midnight -> "HH:MM"
+    function fmtMins(mins) {
+      const m = Math.round(mins) % 1440;
+      const m2 = ((m % 1440) + 1440) % 1440;
+      const hh = Math.floor(m2 / 60);
+      const mm = m2 % 60;
+      const pad = v => String(v).padStart(2, '0');
+      return pad(hh) + ':' + pad(mm);
+    }
+
+    function prayTimesForCity(city, date) {
+      const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+      const { eqTime, decl } = sunPosition(dayOfYear);
+      const lat = toRadian(city.lat);
+      const declRad = toRadian(decl);
+
+      // Hour angle from solar altitude (standard formula):
+      // cos(HA) = [sin(alt) - sin(lat)*sin(decl)] / [cos(lat)*cos(decl)]
+      const cosHourAngle = (altitude) => {
+        const cosine = (Math.sin(toRadian(altitude)) - Math.sin(lat) * Math.sin(declRad))
+          / (Math.cos(lat) * Math.cos(declRad));
+        return Math.acos(Math.max(-1, Math.min(1, cosine)));
+      };
+
+      const sunAltitude = -0.833; // sunset/sunrise: center of sun 0.833° below horizon
+      const norm = m => ((m % 1440) + 1440) % 1440;
+
+      // Solar noon (Dhuhr) as minutes past local midnight (JST = UTC+9)
+      const dhuhrTime = (720 + 4 * city.lon / 15 - eqTime) % 1440;
+
+      // Everything derives from normalized solar noon
+      const noon = norm(dhuhrTime);
+      const maghrib = norm(noon + toDegree(cosHourAngle(sunAltitude)) / 15 * 60);
+      const asr = norm(noon + toDegree(cosHourAngle(15)) / 15 * 60);
+      const fajr = norm(noon - toDegree(cosHourAngle(city.fajrAngle)) / 15 * 60);
+      const isha = norm(noon + toDegree(cosHourAngle(city.ishaAngle)) / 15 * 60);
+      const sunrise = norm(noon - toDegree(cosHourAngle(sunAltitude)) / 15 * 60);
+
+      return { Fajr: fajr, Sunrise: sunrise, Dhuhr: noon, Asr: asr, Maghrib: maghrib, Isha: isha };
+    }
+
+    function updatePrayerClock() {
+      const city = CITIES[currentCity] || CITIES.tokyo;
+      const zone = city.jstZone || 'Asia/Tokyo';
+
+      // Current time in the city's zone
+      let cityNow;
+      try {
+        const parts = new Intl.DateTimeFormat('en-US', {
+          timeZone: zone, year: 'numeric', month: 'numeric', day: 'numeric',
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        }).formatToParts(new Date());
+        const get = t => (parts.find(p => p.type === t) || {}).value;
+        const yr = +get('year'), mo = +get('month') - 1, dy = +get('day');
+        let hh = +get('hour'); if (hh === 24) hh = 0;
+        cityNow = new Date(yr, mo, dy, hh, +get('minute'), +get('second'));
+      } catch (e) {
+        cityNow = new Date();
+      }
+
+      // Top bar clock (Tokyo JST label)
       const tf = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        timeZone: zone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
       });
-      document.getElementById('tokyoLiveTime').textContent = 'Tokyo JST: ' + tf.format(now);
+      document.getElementById('tokyoLiveTime').textContent = city.name + ' JST: ' + tf.format(new Date());
 
-      // Date display
+      // Date display (local)
       const df = new Intl.DateTimeFormat('en-US', {
-        weekday: 'long', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'Asia/Tokyo'
+        weekday: 'long', month: 'short', day: 'numeric', year: 'numeric', timeZone: zone
       });
-      document.getElementById('gregorianDateDisplay').textContent = df.format(now);
+      document.getElementById('gregorianDateDisplay').textContent = df.format(new Date()) + ' — ' + city.name;
 
-      // Prayer schedule (approximate for Tokyo)
+      // Hijri date (Umm al-Qura algorithm)
+      const hijriEl = document.getElementById('hijriLiveDate');
+      if (hijriEl) {
+        const g = new Date(cityNow.getTime() + city.tzOffset * 3600000);
+        const gy = g.getUTCFullYear(), gm = g.getUTCMonth() + 1, gd = g.getUTCDate();
+        let jd = Math.floor((1461 * (gy + 4800 + Math.floor((gm - 14) / 12))) / 4)
+          + Math.floor((367 * (gm - 2 - 12 * Math.floor((gm - 14) / 12))) / 12)
+          - Math.floor((3 * Math.floor((gy + 4900 + Math.floor((gm - 14) / 12)) / 100)) / 4)
+          + gd - 32075;
+        const l = jd - 1948440 + 10632;
+        const n = Math.floor((l - 1) / 10631);
+        l = l - 10631 * n + 354;
+        const j = Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719) + Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
+        l = l - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) - Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
+        const hm = Math.floor((24 * l) / 709);
+        let hd = Math.round(l - Math.floor((709 * hm) / 24));
+        const hy = 30 * n + j - 30;
+        const months = ['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Akhirah','Rajab','Sha\'ban','Ramadan','Shawwal','Dhu al-Qi\'dah','Dhu al-Hijjah'];
+        hijriEl.textContent = months[Math.max(0, hm - 1)] + ' ' + hd + ', ' + hy + ' AH';
+      }
+
+      // Compute today's prayer schedule
+      const t = prayTimesForCity(city, cityNow);
       const schedule = [
-        { name: 'Fajr (فجر)',    id: 'slotFajr',    timeId: 'fajrTimeVal',    h: 3,  m: 48 },
-        { name: 'Dhuhr (ظهر)',   id: 'slotDhuhr',   timeId: 'dhuhrTimeVal',   h: 11, m: 46 },
-        { name: 'Asr (عصر)',     id: 'slotAsr',     timeId: 'asrTimeVal',     h: 15, m: 28 },
-        { name: 'Maghrib (مغرب)',id: 'slotMaghrib', timeId: 'maghribTimeVal', h: 18, m: 14 },
-        { name: 'Isha (عشاء)',   id: 'slotIsha',    timeId: 'ishaTimeVal',    h: 19, m: 38 }
+        { name: 'Fajr (فجر)',    id: 'slotFajr',    timeId: 'fajrTimeVal',    h: t.Fajr },
+        { name: 'Sunrise',       id: 'slotSunrise', timeId: 'sunriseTimeVal', h: t.Sunrise },
+        { name: 'Dhuhr (ظهر)',   id: 'slotDhuhr',   timeId: 'dhuhrTimeVal',   h: t.Dhuhr },
+        { name: 'Asr (عصر)',     id: 'slotAsr',     timeId: 'asrTimeVal',     h: t.Asr },
+        { name: 'Maghrib (مغرب)',id: 'slotMaghrib', timeId: 'maghribTimeVal', h: t.Maghrib },
+        { name: 'Isha (عشاء)',   id: 'slotIsha',    timeId: 'ishaTimeVal',    h: t.Isha }
       ];
 
-      const curMins = tokyo.getHours() * 60 + tokyo.getMinutes();
-      const curSecs = tokyo.getSeconds();
-
-      // Clear active states
       schedule.forEach(s => {
         const el = document.getElementById(s.id);
         if (el) el.classList.remove('active');
+        const timeEl = document.getElementById(s.timeId);
+        if (timeEl) timeEl.textContent = fmtMins(s.h);
       });
+
+      const curMins = cityNow.getHours() * 60 + cityNow.getMinutes();
+      const curSecs = cityNow.getSeconds();
 
       // Find next prayer
       let nextP = null, minDiff = Infinity;
       for (const s of schedule) {
-        const diff = (s.h * 60 + s.m) - curMins;
+        const diff = s.h - curMins;
         if (diff > 0 && diff < minDiff) { minDiff = diff; nextP = s; }
       }
-
       if (!nextP) {
         nextP = schedule[0];
-        minDiff = (1440 - curMins) + (schedule[0].h * 60 + schedule[0].m);
+        minDiff = (1440 - curMins) + schedule[0].h;
       }
 
       const activeEl = document.getElementById(nextP.id);
       if (activeEl) activeEl.classList.add('active');
       document.getElementById('nextPrayerTitle').textContent = nextP.name;
 
-      const rem = Math.max(0, (minDiff * 60) - curSecs);
+      const rem = Math.max(0, Math.round(minDiff * 60 - curSecs));
       const hh = Math.floor(rem / 3600);
       const mm = Math.floor((rem % 3600) / 60);
       const ss = rem % 60;
       const pad = v => String(v).padStart(2, '0');
       document.getElementById('prayerCountdown').textContent = pad(hh) + ':' + pad(mm) + ':' + pad(ss);
+      document.getElementById('qiblaDisplay').innerHTML = 'Qibla Bearing: <strong>' + city.qibla + '</strong>';
+
+      if (prayerCityNameEl) prayerCityNameEl.textContent = city.name;
     }
 
-    setInterval(updateTokyoClockAndPrayers, 1000);
-    updateTokyoClockAndPrayers();
+    setInterval(updatePrayerClock, 1000);
+    updatePrayerClock();
 
     // ========================================================================
     // 3. VENUE FILTER & SEARCH (Category + District + Text)
@@ -2790,6 +3450,28 @@
       } else {
         fallbackCopyText(phrase, '📋 Japanese text copied — show to restaurant staff!');
       }
+    }
+
+    // ========================================================================
+    // 7. CONTACT FORM HANDLER (mailto-based for static hosting)
+    // ========================================================================
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const subject = form.subject.value;
+      const message = form.message.value.trim();
+
+      const subjectLine = `Tokyo Halal Guide — ${subject}: ${name}`;
+      const body = `Assalamualaikum,\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\n---\nSent from Tokyo Halal Guide (tokyomuslim.club)`;
+
+      const mailtoLink = `mailto:concierge@tokyomuslim.club?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+      showToast('✉️ Opening your email app...');
+      form.reset();
+      return false;
     }
   </script>
 </body>
