@@ -10,338 +10,421 @@
 <meta name="google-site-verification" content="t6srP-u4cN9P3VYmCuqky1GQss03RCHiqYDu4j7R1pU">
 <meta name="msvalidate.01" content="A777F8AD205B0AAA340A29A1CBBAF578">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tokyo Muslim Club — halal Tokyo & Kanto, checked by hand">
+<meta property="og:title" content="Tokyo Muslim Club — halal Tokyo & Kanto, verified place by place">
 <meta property="og:description" content="Mosques, prayer rooms and halal restaurants across Tokyo, Yokohama and Kanto, with sources for every listing.">
 <meta property="og:url" content="https://tokyomuslim.club/">
 <meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#1d2b4c">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d2b4c'/%3E%3Cpath d='M16 6A10 10 0 1 0 16 26A12 12 0 0 1 16 6Z' fill='%23d4a959'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0c2b27">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c2b27'/%3E%3Cg fill='none' stroke='%23d8b25e' stroke-width='1.6'%3E%3Crect x='9' y='9' width='14' height='14'/%3E%3Crect x='9' y='9' width='14' height='14' transform='rotate(45 16 16)'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Amiri:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&family=Amiri:wght@400;700&family=Shippori+Mincho:wght@500;700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Tokyo Muslim Club","url":"https://tokyomuslim.club/","description":"Verified mosques, prayer rooms and halal restaurants in Tokyo, Yokohama and the Kanto region."}
 </script>
 <style>
-/* Layout: an indigo-dyed "guidebook" — a two-column hero (thesis + live prayer card),
-   then full-width bands; directory cards sit on a 3-col grid that collapses to one. */
+/* Layout: an illuminated-manuscript guidebook. Emerald night bands framed by gold-leaf geometry
+   (hero, prayer hall, footer) alternate with ivory folio pages; the mihrab arch is the
+   recurring frame — prayer card, prayer windows, compass, call-to-action. */
 :root {
-  --ink: #18223a;          /* body text: indigo-black */
-  --ink-soft: #4b5670;
-  --paper: #f4f3ef;        /* page: unbleached washi, slight cool bias */
-  --sheet: #fbfbf9;        /* cards */
-  --ai: #1d2b4c;           /* aizome indigo — primary */
-  --ai-soft: #e3e6ef;
-  --kin: #a87a2a;          /* gold leaf accent (text-safe on paper) */
-  --kin-bright: #d4a959;
-  --line: #dcdcd4;
-  --ok: #2f6b4f;  --ok-bg: #e2efe7;
-  --warn: #8a5a12; --warn-bg: #f6ead2;
-  --menu: #2c4f86; --menu-bg: #e1e9f5;
-  --hero-ink: #f4f1e8;
-  --shadow: 0 1px 2px rgba(24,34,58,.06), 0 8px 24px -12px rgba(24,34,58,.18);
-  --f-display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
-  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-arabic: "Amiri", "Geeza Pro", "Times New Roman", serif;
-  --r: 14px;
-  --wrap: 1180px;
+  --ivory: #f5f1e8;        /* folio page */
+  --vellum: #fffcf5;       /* cards */
+  --ink: #0f2420;          /* text: green-black */
+  --ink-soft: #55665f;
+  --rule: #e4dccb;         /* hairlines */
+  --emerald: #0c2b27;      /* night band, always dark */
+  --emerald-2: #134039;
+  --emerald-3: #1d5a4f;
+  --night-ink: #f3ecdc;
+  --night-soft: rgba(243,236,220,.68);
+  --gold: #8c6a22;         /* gold as text on ivory */
+  --leaf: #d8b25e;         /* gold leaf on emerald */
+  --leaf-soft: rgba(216,178,94,.35);
+  --turq: #1f7a70;         /* Iznik turquoise */
+  --turq-bg: #dcefeb;
+  --cobalt: #2a4f8f; --cobalt-bg: #e2e9f4;
+  --sand-bg: #efe8d8;
+  --warn: #8a5a12; --warn-bg: #f6e8cc;
+  --no: #8e2a1c; --no-bg: #f4dcd6;
+  --shadow: 0 1px 0 rgba(15,36,32,.04), 0 18px 40px -24px rgba(15,36,32,.28);
+  --f-display: "Marcellus", "Cormorant Garamond", "Times New Roman", serif;
+  --f-body: "Jost", "Futura", "Avenir Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-kufi: "Reem Kufi", "Geeza Pro", "Noto Kufi Arabic", sans-serif;
+  --f-naskh: "Amiri", "Geeza Pro", "Times New Roman", serif;
+  --f-jp: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --wrap: 1200px;
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ink: #e8e6df; --ink-soft: #a7adbe; --paper: #0e1424; --sheet: #151d31;
-    --ai: #2a3b63; --ai-soft: #1d2741; --kin: #d9b36a; --kin-bright: #e3c07c; --line: #263150;
-    --ok: #8fd0ad; --ok-bg: #173327; --warn: #f0c27a; --warn-bg: #3a2c12; --menu: #a9c3ee; --menu-bg: #1c2b4a;
-    --hero-ink: #f4f1e8; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+    --ivory: #0a1d1a; --vellum: #102824; --ink: #ede6d6; --ink-soft: #9fb2ab; --rule: #22403a;
+    --emerald: #071a17; --emerald-2: #0e2d28; --emerald-3: #17463e;
+    --gold: #d8b25e; --turq: #7fd1c4; --turq-bg: #133a34; --cobalt: #a9c1ee; --cobalt-bg: #18294a;
+    --sand-bg: #1a302b; --warn: #f0c27a; --warn-bg: #3a2c12; --no: #f2a597; --no-bg: #3d1c18;
+    --shadow: 0 1px 0 rgba(0,0,0,.2), 0 18px 40px -22px rgba(0,0,0,.7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --ink: #e8e6df; --ink-soft: #a7adbe; --paper: #0e1424; --sheet: #151d31;
-  --ai: #2a3b63; --ai-soft: #1d2741; --kin: #d9b36a; --kin-bright: #e3c07c; --line: #263150;
-  --ok: #8fd0ad; --ok-bg: #173327; --warn: #f0c27a; --warn-bg: #3a2c12; --menu: #a9c3ee; --menu-bg: #1c2b4a;
-  --hero-ink: #f4f1e8; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+  --ivory: #0a1d1a; --vellum: #102824; --ink: #ede6d6; --ink-soft: #9fb2ab; --rule: #22403a;
+  --emerald: #071a17; --emerald-2: #0e2d28; --emerald-3: #17463e;
+  --gold: #d8b25e; --turq: #7fd1c4; --turq-bg: #133a34; --cobalt: #a9c1ee; --cobalt-bg: #18294a;
+  --sand-bg: #1a302b; --warn: #f0c27a; --warn-bg: #3a2c12; --no: #f2a597; --no-bg: #3d1c18;
+  --shadow: 0 1px 0 rgba(0,0,0,.2), 0 18px 40px -22px rgba(0,0,0,.7);
   color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
-body {
-  margin: 0; background: var(--paper); color: var(--ink);
-  font: 400 16px/1.7 var(--f-body); -webkit-font-smoothing: antialiased;
-}
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--ai); }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--ivory); color: var(--ink); font: 400 16.5px/1.7 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--emerald); }
 [hidden] { display: none !important; }
-a { color: inherit; text-underline-offset: 3px; }
-:focus-visible { outline: 2px solid var(--kin-bright); outline-offset: 3px; border-radius: 4px; }
-h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.2; text-wrap: balance; margin: 0; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--leaf); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1.15; letter-spacing: .005em; text-wrap: balance; margin: 0; }
 p { margin: 0; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--sheet); padding: 8px 14px; z-index: 50; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--vellum); padding: 8px 14px; z-index: 50; }
 .skip:focus { left: 16px; }
-.eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--kin); }
+.kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 12.5px; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; color: var(--gold); }
+.kicker svg { width: 11px; height: 11px; flex: none; }
+.ar { font-family: var(--f-kufi); font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 15px; }
+
+/* ---------- Night bands share one patterned ground ---------- */
+.night { background: var(--emerald); color: var(--night-ink); position: relative; isolation: isolate; }
+.night::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .12; pointer-events: none; border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23d8b25e' stroke-width='0.8'%3E%3Cpolygon points='36.0,20.0 40.7,24.7 47.3,24.7 47.3,31.3 52.0,36.0 47.3,40.7 47.3,47.3 40.7,47.3 36.0,52.0 31.3,47.3 24.7,47.3 24.7,40.7 20.0,36.0 24.7,31.3 24.7,24.7 31.3,24.7'/%3E%3Cpolygon points='0.0,-16.0 4.7,-11.3 11.3,-11.3 11.3,-4.7 16.0,0.0 11.3,4.7 11.3,11.3 4.7,11.3 0.0,16.0 -4.7,11.3 -11.3,11.3 -11.3,4.7 -16.0,0.0 -11.3,-4.7 -11.3,-11.3 -4.7,-11.3'/%3E%3Cpolygon points='72.0,-16.0 76.7,-11.3 83.3,-11.3 83.3,-4.7 88.0,0.0 83.3,4.7 83.3,11.3 76.7,11.3 72.0,16.0 67.3,11.3 60.7,11.3 60.7,4.7 56.0,0.0 60.7,-4.7 60.7,-11.3 67.3,-11.3'/%3E%3Cpolygon points='0.0,56.0 4.7,60.7 11.3,60.7 11.3,67.3 16.0,72.0 11.3,76.7 11.3,83.3 4.7,83.3 0.0,88.0 -4.7,83.3 -11.3,83.3 -11.3,76.7 -16.0,72.0 -11.3,67.3 -11.3,60.7 -4.7,60.7'/%3E%3Cpolygon points='72.0,56.0 76.7,60.7 83.3,60.7 83.3,67.3 88.0,72.0 83.3,76.7 83.3,83.3 76.7,83.3 72.0,88.0 67.3,83.3 60.7,83.3 60.7,76.7 56.0,72.0 60.7,67.3 60.7,60.7 67.3,60.7'/%3E%3Cpath d='M36 20V0M36 52v20M20 36H0M52 36h20M47.3 24.7L60.7 11.3M24.7 24.7L11.3 11.3M24.7 47.3L11.3 60.7M47.3 47.3l13.4 13.4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px; background-position: center top;
+}
+.night .kicker { color: var(--leaf); }
 
 /* ---------- Header ---------- */
-.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ai); color: var(--hero-ink); }
-.head-row { display: flex; align-items: center; gap: 16px; min-height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
-.brand svg { flex: none; }
-.brand-name { font-family: var(--f-display); font-weight: 800; font-size: 19px; letter-spacing: .01em; }
-.brand-jp { font-size: 11px; opacity: .65; letter-spacing: .2em; display: block; line-height: 1; }
-.nav { display: flex; gap: 4px; }
-.nav a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; opacity: .85; }
-.nav a:hover { opacity: 1; background: rgba(255,255,255,.08); }
-.icon-btn { background: transparent; border: 1px solid rgba(244,241,232,.25); color: inherit; width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; }
-.icon-btn:hover { border-color: var(--kin-bright); }
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--emerald); color: var(--night-ink); border-bottom: 1px solid var(--leaf-soft); }
+.head-row { display: flex; align-items: center; gap: 14px; min-height: 70px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+.brand-mark { width: 40px; height: 40px; color: var(--leaf); flex: none; }
+.brand-name { font-family: var(--f-display); font-size: 21px; letter-spacing: .04em; display: block; line-height: 1.1; }
+.brand-sub { font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--leaf); display: block; margin-top: 3px; }
+.nav { display: flex; gap: 2px; }
+.nav a { text-decoration: none; padding: 8px 14px; font-size: 14px; letter-spacing: .08em; color: var(--night-soft); position: relative; }
+.nav a::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 1px; background: var(--leaf); transform: scaleX(0); transition: transform .25s; }
+.nav a:hover { color: var(--night-ink); }
+.nav a:hover::after { transform: scaleX(1); }
+.icon-btn { background: transparent; border: 1px solid var(--leaf-soft); color: var(--leaf); width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; transition: background .2s; flex: none; }
+.icon-btn:hover { background: rgba(216,178,94,.1); }
 #navToggle { display: none; }
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   #navToggle { display: grid; }
-  .nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; background: var(--ai); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); display: none; border-top: 1px solid rgba(255,255,255,.08); }
+  .nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; background: var(--emerald); border-bottom: 1px solid var(--leaf-soft); padding: 8px max(20px, env(safe-area-inset-right, 0px)) 18px max(20px, env(safe-area-inset-left, 0px)); display: none; }
   .nav.open { display: flex; }
-  .nav a { padding: 12px; }
+  .nav a { padding: 14px 4px; font-size: 16px; border-top: 1px solid rgba(216,178,94,.12); }
+  .nav a::after { display: none; }
 }
+.brand-name { white-space: nowrap; }
+@media (max-width: 480px) { .brand-name { font-size: 18px; } .brand-sub { font-size: 9.5px; letter-spacing: .24em; } .brand-mark { width: 34px; height: 34px; } .head-row { gap: 10px; } }
 
 /* ---------- Hero ---------- */
-.hero { background: var(--ai); color: var(--hero-ink); position: relative; overflow: hidden; }
-.hero::before {
-  /* eight-pointed star lattice — shared by Islamic and Japanese (kumiko) geometry */
-  content: ""; position: absolute; inset: 0; opacity: .07; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23f4f1e8' stroke-width='1'%3E%3Crect x='16' y='16' width='24' height='24'/%3E%3Crect x='16' y='16' width='24' height='24' transform='rotate(45 28 28)'/%3E%3Cpath d='M0 28h11M45 28h11M28 0v11M28 45v11'/%3E%3C/g%3E%3C/svg%3E");
-  -webkit-mask-image: linear-gradient(100deg, transparent 20%, #000 75%); mask-image: linear-gradient(100deg, transparent 20%, #000 75%);
-}
-.hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 64px 72px; }
-.hero h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; letter-spacing: -.01em; line-height: 1.08; }
-.hero h1 em { font-style: normal; color: var(--kin-bright); }
-.hero-lede { margin-top: 20px; font-size: 18px; max-width: 34em; color: rgba(244,241,232,.82); }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.hero .btn-primary { background: var(--kin-bright); color: #1d2030; border-color: var(--kin-bright); }
-.hero .btn-ghost { color: var(--hero-ink); border-color: rgba(244,241,232,.35); background: transparent; }
-.stats { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(244,241,232,.15); }
-.stat b { display: block; font-family: var(--f-display); font-size: 32px; font-weight: 800; line-height: 1; color: var(--hero-ink); font-variant-numeric: tabular-nums; }
-.stat a, .stat span { font-size: 13px; color: rgba(244,241,232,.7); text-decoration: none; }
-.stat a:hover { color: var(--kin-bright); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 72px 96px; }
+.salam { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.salam span { font-family: var(--f-kufi); font-size: 28px; color: var(--leaf); line-height: 1.2; }
+.salam small { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--night-soft); }
+.hero h1 { font-size: clamp(42px, 6.4vw, 80px); line-height: 1.04; }
+.hero h1 em { font-style: normal; color: var(--leaf); display: block; }
+.hero-lede { margin-top: 26px; font-size: 18.5px; font-weight: 300; line-height: 1.7; max-width: 33em; color: var(--night-soft); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 52px; border-top: 1px solid var(--leaf-soft); }
+.stat { padding: 20px 12px 0 0; display: grid; gap: 4px; }
+.stat + .stat { padding-left: 18px; border-left: 1px solid rgba(216,178,94,.18); }
+.stat b { font-family: var(--f-display); font-weight: 400; font-size: 42px; line-height: 1; color: var(--night-ink); font-variant-numeric: tabular-nums; }
+.stat a, .stat span { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--night-soft); text-decoration: none; }
+.stat a:hover { color: var(--leaf); }
+@media (max-width: 520px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat:nth-child(3) { padding-left: 0; border-left: 0; } .stat b { font-size: 34px; } }
 
-.prayer-card { background: rgba(244,241,232,.06); border: 1px solid rgba(244,241,232,.16); border-radius: 22px; padding: 28px; backdrop-filter: blur(6px); }
-.pc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13px; color: rgba(244,241,232,.7); }
-.pc-label { margin-top: 18px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--kin-bright); font-weight: 700; }
-.pc-next { font-family: var(--f-display); font-size: clamp(40px, 5vw, 56px); font-weight: 800; line-height: 1.05; margin-top: 6px; font-variant-numeric: tabular-nums; }
-.pc-count { margin-top: 6px; font-size: 18px; font-variant-numeric: tabular-nums; color: rgba(244,241,232,.85); }
-.pc-foot { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(244,241,232,.14); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: rgba(244,241,232,.7); }
-.pc-foot a { color: var(--kin-bright); }
-@media (max-width: 860px) { .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 40px 48px; } }
+/* Mihrab prayer card */
+.mihrab { position: relative; max-width: 410px; justify-self: end; width: 100%; }
+.mihrab-frame { position: relative; border: 1px solid var(--leaf); border-radius: 999px 999px 18px 18px; padding: 10px; background: linear-gradient(180deg, rgba(216,178,94,.10), rgba(216,178,94,0) 55%); }
+.mihrab-inner { border: 1px solid var(--leaf-soft); border-radius: 999px 999px 12px 12px; padding: 100px 28px 28px; text-align: center; display: grid; gap: 4px; position: relative; overflow: hidden; }
+.mihrab-inner::before { content: ""; position: absolute; left: 50%; top: -80px; width: 320px; height: 320px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(216,178,94,.2), transparent 65%); pointer-events: none; }
+.finial { position: absolute; left: 50%; top: -16px; transform: translateX(-50%); width: 32px; height: 32px; color: var(--leaf); background: var(--emerald); padding: 4px; border-radius: 50%; }
+.rosette { position: absolute; left: 50%; top: 30px; width: 52px; height: 52px; margin-left: -26px; color: var(--leaf); animation: turn 90s linear infinite; }
+@keyframes turn { to { transform: rotate(360deg); } }
+.m-city { font-size: 11.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--night-soft); position: relative; }
+.m-label { margin-top: 16px; font-family: var(--f-kufi); color: var(--leaf); font-size: 20px; }
+.m-name { font-family: var(--f-display); font-size: clamp(40px, 5vw, 52px); line-height: 1.05; }
+.m-time { font-family: var(--f-display); font-size: clamp(54px, 6.6vw, 76px); line-height: 1; color: var(--leaf); font-variant-numeric: tabular-nums; }
+.m-count { margin-top: 6px; font-size: 14.5px; letter-spacing: .08em; color: var(--night-soft); font-variant-numeric: tabular-nums; }
+.m-foot { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(216,178,94,.2); display: grid; gap: 8px; font-size: 13px; color: var(--night-soft); }
+.m-foot a { color: var(--leaf); text-decoration: none; letter-spacing: .16em; text-transform: uppercase; font-size: 11.5px; }
+.m-foot a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; padding-block: 48px 72px; } .mihrab { justify-self: center; } }
 
 /* ---------- Buttons ---------- */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 500 14px/1 var(--f-body); padding: 11px 16px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; cursor: pointer; background: var(--sheet); color: var(--ink); transition: border-color .15s, background .15s; }
-.btn-primary { background: var(--ai); border-color: var(--ai); color: #f4f1e8; }
-.btn-primary:hover { filter: brightness(1.15); }
-.btn-ghost:hover { border-color: var(--kin); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 500 14px/1 var(--f-body); letter-spacing: .08em; padding: 15px 24px; border-radius: 999px; border: 1px solid var(--rule); text-decoration: none; cursor: pointer; background: transparent; color: var(--ink); transition: background .2s, border-color .2s, color .2s; }
+.btn-gold { background: var(--leaf); border-color: var(--leaf); color: #10201c; }
+.btn-gold:hover { background: #e6c47a; border-color: #e6c47a; }
+.btn-line { border-color: var(--leaf-soft); color: var(--night-ink); }
+.btn-line:hover { border-color: var(--leaf); color: var(--leaf); }
+.btn-solid { background: var(--emerald-2); border-color: var(--emerald-2); color: #f3ecdc; }
+.btn-solid:hover { background: var(--emerald-3); border-color: var(--emerald-3); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-sm { padding: 10px 16px; font-size: 13px; letter-spacing: .04em; }
 
-/* ---------- Sections ---------- */
-.band { padding-block: 72px; }
-.band + .band { border-top: 1px solid var(--line); }
-.sec-head { display: grid; gap: 10px; max-width: 46em; margin-bottom: 32px; }
-.sec-head h2 { font-size: clamp(30px, 4vw, 44px); }
-.sec-head p { color: var(--ink-soft); font-size: 17px; }
+/* ---------- Section heads ---------- */
+.band { padding-block: 96px; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 40px; align-items: end; margin-bottom: 44px; }
+.sec-head > :not(.ar-word) { grid-column: 1; }
+.sec-head .ar-word { grid-column: 2; grid-row: 1 / span 3; align-self: center; font-family: var(--f-kufi); font-size: clamp(48px, 6.4vw, 84px); line-height: 1; color: var(--gold); }
+.night .sec-head .ar-word { color: var(--leaf); }
+.sec-head h2 { font-size: clamp(34px, 4.4vw, 54px); }
+.sec-head > p:last-of-type { color: var(--ink-soft); font-size: 17.5px; font-weight: 300; max-width: 40em; }
+.night .sec-head > p:last-of-type { color: var(--night-soft); }
+@media (max-width: 700px) { .sec-head { grid-template-columns: minmax(0, 1fr); } .sec-head .ar-word { grid-column: 1; grid-row: auto; order: -1; font-size: 44px; } }
+.ornament { display: flex; align-items: center; gap: 18px; color: var(--gold); }
+.ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--rule) 25%, var(--rule) 75%, transparent); }
+.ornament svg { width: 30px; height: 30px; flex: none; }
 
-/* ---------- Prayer section ---------- */
-.prayer-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; }
-@media (max-width: 860px) { .prayer-layout { grid-template-columns: minmax(0, 1fr); } }
-.controls { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
-.field { display: grid; gap: 4px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
-select, input[type="search"] { font: 400 15px var(--f-body); color: var(--ink); background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-height: 44px; max-width: 100%; }
-select:hover, input[type="search"]:hover { border-color: var(--kin); }
-.prayer-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--r); background: var(--sheet); overflow: hidden; }
-.pt { padding: 18px 14px; display: grid; gap: 2px; border-left: 1px solid var(--line); position: relative; }
-.pt:first-child { border-left: 0; }
-.pt-ar { font-family: var(--f-arabic); font-size: 20px; color: var(--kin); line-height: 1.3; }
-.pt-name { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
-.pt-time { font-family: var(--f-display); font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.pt.is-muted .pt-time, .pt.is-muted .pt-ar { opacity: .55; }
-.pt.is-next { background: var(--ai); color: #f4f1e8; }
-.pt.is-next .pt-name { color: rgba(244,241,232,.75); }
-.pt.is-next .pt-ar { color: var(--kin-bright); }
-.pt.is-next::after { content: "Next"; position: absolute; top: 10px; right: 10px; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: var(--kin-bright); color: #1d2030; padding: 2px 7px; border-radius: 999px; }
-.pt.is-now { box-shadow: inset 0 -3px 0 var(--kin); }
-@media (max-width: 760px) {
-  .prayer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pt:nth-child(4) { border-left: 0; }
-  .pt:nth-child(n+4) { border-top: 1px solid var(--line); }
-}
-@media (max-width: 420px) { .pt-time { font-size: 24px; } .pt { padding: 14px 10px; } }
-.method-note { margin-top: 14px; font-size: 14px; color: var(--ink-soft); max-width: 60em; }
-.qibla { border: 1px solid var(--line); background: var(--sheet); border-radius: var(--r); padding: 22px; display: grid; justify-items: center; gap: 10px; text-align: center; }
-.compass { width: 150px; height: 150px; border-radius: 50%; border: 1px solid var(--line); position: relative; background: radial-gradient(circle, var(--ai-soft) 0 58%, transparent 59%); }
-.compass span { position: absolute; font-size: 11px; font-weight: 700; color: var(--ink-soft); }
-.compass .n { top: 6px; left: 50%; transform: translateX(-50%); }
-.compass .s { bottom: 6px; left: 50%; transform: translateX(-50%); }
-.compass .e { right: 8px; top: 50%; transform: translateY(-50%); }
-.compass .w { left: 8px; top: 50%; transform: translateY(-50%); }
-#qiblaNeedle { position: absolute; left: 50%; top: 50%; width: 4px; height: 62px; margin-left: -2px; margin-top: -62px; transform-origin: 50% 100%; background: linear-gradient(var(--kin), var(--kin) 70%, transparent); border-radius: 4px; transition: transform .6s ease; }
-#qiblaNeedle::before { content: ""; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; background: var(--ai); border: 2px solid var(--kin); border-radius: 2px; }
-.qibla-deg { font-family: var(--f-display); font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.qibla p { font-size: 13px; color: var(--ink-soft); }
+/* ---------- Prayer hall ---------- */
+.prayer-band { background: var(--emerald-2); }
+.controls { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+.field { display: grid; gap: 6px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--leaf); }
+select, input[type="search"] { font: 400 15px var(--f-body); color: var(--ink); background: var(--vellum); border: 1px solid var(--rule); border-radius: 12px; padding: 11px 14px; min-height: 46px; max-width: 100%; }
+select:hover, input[type="search"]:hover { border-color: var(--gold); }
+.night select { background: rgba(0,0,0,.18); color: var(--night-ink); border-color: var(--leaf-soft); }
+.night select:hover { border-color: var(--leaf); }
+.night select option { color: #10201c; background: #f5f1e8; }
+.prayer-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: start; }
+@media (max-width: 960px) { .prayer-layout { grid-template-columns: minmax(0, 1fr); } }
+.prayer-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.pt { border: 1px solid var(--leaf-soft); border-radius: 999px 999px 10px 10px; padding: 52px 6px 20px; display: grid; justify-items: center; gap: 2px; text-align: center; position: relative; background: rgba(0,0,0,.12); transition: background .3s; min-width: 0; }
+.pt::before { content: ""; position: absolute; inset: 6px; border: 1px solid rgba(216,178,94,.13); border-radius: 999px 999px 6px 6px; pointer-events: none; }
+.pt-ar { font-family: var(--f-kufi); font-size: 22px; color: var(--leaf); line-height: 1.3; }
+.pt-name { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--night-soft); }
+.pt-time { font-family: var(--f-display); font-size: 31px; font-variant-numeric: tabular-nums; margin-top: 6px; }
+.pt.is-muted { opacity: .55; }
+.pt.is-next { background: linear-gradient(180deg, rgba(216,178,94,.32), rgba(216,178,94,.06)); border-color: var(--leaf); }
+.pt.is-next::after { content: "Next"; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 9.5px; letter-spacing: .24em; text-transform: uppercase; color: #10201c; background: var(--leaf); padding: 2px 9px; border-radius: 999px; }
+.pt.is-now .pt-name { color: var(--leaf); }
+@media (max-width: 760px) { .prayer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 400px) { .pt-time { font-size: 25px; } .pt { padding-top: 46px; } .prayer-grid { gap: 8px; } }
+.method-note { margin-top: 24px; font-size: 14.5px; font-weight: 300; color: var(--night-soft); max-width: 62em; }
+.method-note b { color: var(--night-ink); font-weight: 500; }
+.qibla { border: 1px solid var(--leaf-soft); border-radius: 999px 999px 14px 14px; padding: 48px 24px 26px; display: grid; justify-items: center; gap: 12px; text-align: center; background: rgba(0,0,0,.12); }
+.compass { width: 176px; height: 176px; position: relative; }
+.compass > svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--leaf); }
+.compass span { position: absolute; font-size: 11px; letter-spacing: .1em; color: var(--night-soft); }
+.compass .n { top: -4px; left: 50%; transform: translateX(-50%); color: var(--leaf); }
+.compass .s { bottom: -4px; left: 50%; transform: translateX(-50%); }
+.compass .e { right: -6px; top: 50%; transform: translateY(-50%); }
+.compass .w { left: -6px; top: 50%; transform: translateY(-50%); }
+#qiblaNeedle { position: absolute; left: 50%; top: 50%; width: 2px; height: 68px; margin-left: -1px; margin-top: -68px; transform-origin: 50% 100%; background: linear-gradient(var(--leaf), rgba(216,178,94,.15)); transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+#qiblaNeedle::before { content: ""; position: absolute; top: -9px; left: 50%; width: 14px; height: 14px; margin-left: -7px; transform: rotate(45deg); background: var(--emerald-2); border: 1.5px solid var(--leaf); }
+.qibla-deg { font-family: var(--f-display); font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.qibla p { font-size: 13px; font-weight: 300; color: var(--night-soft); max-width: 22em; }
 
 /* ---------- Directory ---------- */
-.legend { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: var(--ink-soft); margin-bottom: 24px; }
-.legend div { display: flex; gap: 8px; align-items: center; }
-.toolbar { position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 10; background: var(--paper); padding-block: 14px; border-bottom: 1px solid var(--line); display: grid; gap: 12px; }
+.legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--rule); margin-bottom: 8px; }
+.legend div { padding: 18px 22px 18px 0; font-size: 14px; font-weight: 300; color: var(--ink-soft); display: grid; gap: 8px; align-content: start; justify-items: start; }
+.legend div + div { padding-left: 22px; border-left: 1px solid var(--rule); }
+@media (max-width: 760px) { .legend { grid-template-columns: minmax(0, 1fr); } .legend div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
+.toolbar { position: sticky; top: calc(70px + env(safe-area-inset-top, 0px)); z-index: 10; background: var(--ivory); padding-block: 16px; border-bottom: 1px solid var(--rule); display: grid; gap: 12px; }
+@media (max-width: 760px) { .toolbar { position: static; } }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font: 500 14px var(--f-body); padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--sheet); color: var(--ink); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.chip { font: 400 14.5px var(--f-body); letter-spacing: .03em; padding: 9px 16px 9px 13px; border-radius: 999px; border: 1px solid var(--rule); background: var(--vellum); color: var(--ink); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; transition: border-color .2s, background .2s; }
+.chip svg { width: 17px; height: 17px; color: var(--gold); flex: none; }
 .chip small { font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.chip[aria-pressed="true"] { background: var(--ai); border-color: var(--ai); color: #f4f1e8; }
-.chip[aria-pressed="true"] small { color: rgba(244,241,232,.75); }
-.chip:hover { border-color: var(--kin); }
+.chip:hover { border-color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--emerald-2); border-color: var(--leaf); color: #f3ecdc; }
+.chip[aria-pressed="true"] svg { color: var(--leaf); }
+.chip[aria-pressed="true"] small { color: rgba(243,236,220,.7); }
 .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .filters input[type="search"] { flex: 1 1 260px; }
-.filters select { flex: 0 1 300px; }
+.filters select { flex: 0 1 320px; }
 .toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
-.toggle input { width: 18px; height: 18px; accent-color: var(--ai); }
-.result-count { font-size: 13px; color: var(--ink-soft); margin-left: auto; font-variant-numeric: tabular-nums; }
-@media (max-width: 760px) { .toolbar { position: static; } }
-.region-head { display: flex; align-items: center; gap: 16px; font-size: 22px; margin: 40px 0 18px; }
-.region-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 18px; align-items: start; }
-.card { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 14px; box-shadow: var(--shadow); min-width: 0; scroll-margin-top: 200px; }
-.card-head { display: grid; gap: 4px; }
-.card-title { font-size: 21px; }
-.card-jp { font-size: 13px; color: var(--ink-soft); }
+.toggle input { width: 18px; height: 18px; accent-color: var(--turq); }
+.result-count { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-left: auto; font-variant-numeric: tabular-nums; }
+.region-head { display: flex; align-items: center; gap: 14px; margin: 60px 0 24px; }
+.region-head h3 { font-size: 27px; }
+.region-head svg { width: 14px; height: 14px; color: var(--gold); flex: none; }
+.region-head::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr)); gap: 20px; align-items: start; }
+.card { background: var(--vellum); border: 1px solid var(--rule); border-radius: 20px; padding: 26px; display: grid; gap: 16px; box-shadow: var(--shadow); min-width: 0; scroll-margin-top: 220px; transition: transform .25s, border-color .25s; }
+.card:hover { border-color: color-mix(in srgb, var(--gold) 45%, var(--rule)); transform: translateY(-2px); }
+.card-head { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 3px 16px; align-items: start; }
+.card-head > :not(.medal) { grid-column: 2; }
+.medal { grid-column: 1; grid-row: 1 / span 4; width: 54px; height: 54px; position: relative; display: grid; place-items: center; color: var(--gold); }
+.medal .m-bg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .5; }
+.medal .m-ic { width: 22px; height: 22px; position: relative; }
+.card-eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.card-title { font-size: 24px; }
+.card-jp { font-family: var(--f-jp); font-size: 13.5px; color: var(--ink-soft); }
 .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.badge { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; letter-spacing: .02em; }
-.b-full { background: var(--ok-bg); color: var(--ok); }
-.b-menu { background: var(--menu-bg); color: var(--menu); }
-.b-friendly { background: var(--ai-soft); color: var(--ink-soft); }
-.b-ok { background: transparent; color: var(--ok); border: 1px solid currentColor; }
+.badge { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; letter-spacing: .04em; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+.badge::before { content: ""; width: 6px; height: 6px; transform: rotate(45deg); background: currentColor; flex: none; }
+.b-full { background: var(--turq-bg); color: var(--turq); }
+.b-menu { background: var(--cobalt-bg); color: var(--cobalt); }
+.b-friendly { background: var(--sand-bg); color: var(--ink-soft); }
+.b-ok { color: var(--turq); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--turq) 40%, transparent); }
 .b-check { background: var(--warn-bg); color: var(--warn); }
-.card-desc { font-size: 15px; }
-.facts { margin: 0; display: grid; gap: 8px; font-size: 14px; }
-.facts div { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 10px; }
-.facts dt { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); padding-top: 3px; }
+.card-desc { font-size: 15.5px; font-weight: 300; line-height: 1.7; }
+.facts { margin: 0; display: grid; gap: 10px; font-size: 14px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.facts div { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; }
+.facts dt { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); padding-top: 3px; }
 .facts dd { margin: 0; overflow-wrap: anywhere; }
-.facts .jp { display: block; color: var(--ink-soft); font-size: 13px; }
-.facts a { color: var(--ink); }
+.facts .jp { display: block; font-family: var(--f-jp); color: var(--ink-soft); font-size: 13px; margin-top: 2px; }
 .tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-.tags li { font-size: 12px; padding: 3px 9px; border-radius: 6px; border: 1px solid var(--line); color: var(--ink-soft); }
-.note { font-size: 13.5px; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; color: var(--ink-soft); }
-.note span { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: var(--ai-soft); color: var(--ink); font-family: var(--f-display); }
-.note-check { color: var(--warn); }
-.note-check span { background: var(--warn-bg); color: var(--warn); }
+.tags li { font-size: 12.5px; padding: 3px 11px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-soft); }
+.note { font-size: 13.5px; display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 10px; color: var(--ink-soft); background: var(--sand-bg); padding: 12px 14px; border-radius: 12px; }
+.note svg { width: 12px; height: 12px; margin-top: 5px; color: var(--gold); }
+.note-check { color: var(--warn); background: var(--warn-bg); }
+.note-check svg { color: var(--warn); }
 .card-foot { display: flex; flex-wrap: wrap; gap: 8px; }
-.card-foot .btn { padding: 9px 13px; font-size: 13px; }
-.sources { font-size: 12px; color: var(--ink-soft); border-top: 1px dashed var(--line); padding-top: 10px; }
+.sources { font-size: 12px; color: var(--ink-soft); }
 .sources a { color: var(--ink-soft); }
-.sources a:hover { color: var(--kin); }
-.empty { padding: 48px 0; text-align: center; color: var(--ink-soft); }
-.empty-title { font-family: var(--f-display); font-size: 22px; color: var(--ink); margin-bottom: 6px; }
+.sources a:hover { color: var(--gold); }
+.empty { padding: 56px 0; text-align: center; color: var(--ink-soft); }
+.empty-title { font-family: var(--f-display); font-size: 26px; color: var(--ink); margin-bottom: 6px; }
 
 /* ---------- Essentials ---------- */
-.ess-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-@media (max-width: 900px) { .ess-grid { grid-template-columns: minmax(0, 1fr); } }
-.sub-h { font-size: 24px; margin-bottom: 6px; }
-.sub-p { color: var(--ink-soft); font-size: 15px; margin-bottom: 18px; }
-.phrases { display: grid; gap: 12px; }
-.phrase { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; display: grid; gap: 6px; }
-.phrase-en { font-size: 14px; color: var(--ink-soft); }
-.phrase-jp { font-family: var(--f-display); font-size: 21px; font-weight: 700; line-height: 1.5; }
-.phrase-ro { font-size: 13px; color: var(--ink-soft); font-style: italic; }
-.phrase .btn { justify-self: start; margin-top: 4px; padding: 8px 12px; font-size: 13px; }
-.labels { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-.labels input { width: 100%; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
-.label-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 14px 18px; border-top: 1px solid var(--line); align-items: center; }
+.ess-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+@media (max-width: 920px) { .ess-grid { grid-template-columns: minmax(0, 1fr); } }
+.sub-h { font-size: 28px; margin-bottom: 6px; }
+.sub-p { color: var(--ink-soft); font-size: 15.5px; font-weight: 300; margin-bottom: 20px; }
+.phrases { display: grid; gap: 14px; }
+.phrase { background: var(--vellum); border: 1px solid var(--rule); border-radius: 18px; padding: 22px 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; align-items: center; }
+.phrase > * { grid-column: 1; }
+.phrase .btn { grid-column: 2; grid-row: 1 / span 3; }
+@media (max-width: 560px) { .phrase { grid-template-columns: minmax(0, 1fr); } .phrase .btn { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 6px; } }
+.phrase-en { font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.phrase-jp { font-family: var(--f-jp); font-size: 21px; font-weight: 700; line-height: 1.6; }
+.phrase-ro { font-size: 14px; color: var(--ink-soft); font-weight: 300; }
+.labels { background: var(--vellum); border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; }
+.labels input { width: 100%; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; padding: 16px 20px; min-height: 56px; }
+.label-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 15px 20px; border-top: 1px solid var(--rule); align-items: center; }
 .label-row:first-of-type { border-top: 0; }
-.label-kanji { font-family: var(--f-display); font-size: 19px; font-weight: 700; }
-.label-ro { font-size: 13px; color: var(--ink-soft); }
-.verdict { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
-.v-no { background: #f3dcd8; color: #8e2a1c; }
+.label-kanji { font-family: var(--f-jp); font-size: 19px; font-weight: 700; }
+.label-ro { font-size: 13px; font-weight: 300; color: var(--ink-soft); }
+.verdict { font-size: 11.5px; font-weight: 500; letter-spacing: .06em; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
+.v-no { background: var(--no-bg); color: var(--no); }
 .v-check { background: var(--warn-bg); color: var(--warn); }
-.v-ok { background: var(--ok-bg); color: var(--ok); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .v-no { background: #3d1c18; color: #f2a597; } }
-:root[data-theme="dark"] .v-no { background: #3d1c18; color: #f2a597; }
-.certs { margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 12px; }
-.cert { border-left: 2px solid var(--kin); padding: 4px 0 4px 14px; font-size: 14px; }
-.cert b { display: block; font-size: 15px; }
-.cert span { color: var(--ink-soft); }
+.v-ok { background: var(--turq-bg); color: var(--turq); }
+.certs-wrap { margin-top: 64px; }
+.certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); column-gap: 28px; border-top: 1px solid var(--rule); }
+.cert { padding: 20px 0; border-bottom: 1px solid var(--rule); font-size: 14px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 2px 12px; }
+.cert svg { width: 15px; height: 15px; color: var(--gold); margin-top: 5px; grid-row: span 2; }
+.cert b { font-weight: 500; font-size: 15.5px; }
+.cert span { color: var(--ink-soft); font-weight: 300; }
 
 /* ---------- Changes ---------- */
-.changes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.changes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
 @media (max-width: 860px) { .changes-grid { grid-template-columns: minmax(0, 1fr); } }
-.log { list-style: none; padding: 0; margin: 0; display: grid; }
-.log li { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 14.5px; }
-.log strong { font-weight: 700; }
-.log span { color: var(--ink-soft); }
-.log-h { display: flex; align-items: center; gap: 10px; font-size: 22px; margin-bottom: 8px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.log-h { display: flex; align-items: center; gap: 12px; font-size: 27px; margin-bottom: 12px; }
+.log-h svg { width: 14px; height: 14px; flex: none; }
+.log { list-style: none; padding: 0; margin: 0; counter-reset: log; }
+.log li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 2px 8px; padding: 16px 0; border-top: 1px solid var(--rule); font-size: 14.5px; counter-increment: log; }
+.log li::before { content: counter(log, decimal-leading-zero); grid-row: span 2; font-family: var(--f-display); color: var(--gold); font-size: 15px; }
+.log strong { font-weight: 500; }
+.log span { color: var(--ink-soft); font-weight: 300; }
 
-/* ---------- Suggest + footer ---------- */
-.suggest { background: var(--ai); color: var(--hero-ink); border-radius: 22px; padding: 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; }
-.suggest h2 { font-size: clamp(26px, 3vw, 34px); }
-.suggest p { color: rgba(244,241,232,.8); margin-top: 8px; max-width: 40em; }
-.suggest .btn-primary { background: var(--kin-bright); border-color: var(--kin-bright); color: #1d2030; }
-@media (max-width: 760px) { .suggest { grid-template-columns: minmax(0, 1fr); padding: 28px; } }
-.site-foot { padding-block: 40px 56px; font-size: 13.5px; color: var(--ink-soft); display: grid; gap: 12px; }
-.site-foot p { max-width: 70em; }
+/* ---------- Suggest (arched panel) + footer ---------- */
+.suggest-band { padding-block: 24px 96px; }
+.suggest { max-width: 900px; margin: 0 auto; background: var(--emerald-2); border-radius: 999px 999px 24px 24px; text-align: center; padding: 124px max(24px, 9%) 60px; display: grid; justify-items: center; gap: 14px; overflow: hidden; }
+.suggest::after { content: ""; position: absolute; inset: 10px; border: 1px solid var(--leaf-soft); border-radius: 999px 999px 16px 16px; pointer-events: none; }
+.suggest .rosette { top: 44px; }
+.suggest h2 { font-size: clamp(30px, 4vw, 46px); }
+.suggest p:not(.kicker) { color: var(--night-soft); font-weight: 300; max-width: 36em; }
+.suggest .btn { margin-top: 12px; position: relative; z-index: 1; }
+@media (max-width: 640px) { .suggest { border-radius: 220px 220px 20px 20px; padding-top: 116px; } .suggest::after { border-radius: 210px 210px 12px 12px; } }
+.site-foot { padding-block: 56px 64px; border-top: 1px solid var(--leaf-soft); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; }
+.foot-grid p { font-size: 13.5px; font-weight: 300; color: var(--night-soft); max-width: 62em; }
+.foot-grid p + p { margin-top: 10px; }
+.foot-grid .foot-ar { font-family: var(--f-naskh); font-size: 32px; color: var(--leaf) !important; text-align: right; line-height: 1.4; }
+.foot-grid .foot-ar small { display: block; font-family: var(--f-body); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--night-soft); }
+@media (max-width: 700px) { .foot-grid { grid-template-columns: minmax(0, 1fr); } .foot-grid .foot-ar { text-align: left; } }
 
-.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 40; max-width: calc(100% - 32px); text-align: center; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); background: var(--emerald-2); color: #f3ecdc; border: 1px solid var(--leaf-soft); padding: 13px 20px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 40; max-width: calc(100% - 32px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="14" height="14"/><rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)"/></g></symbol>
+  <symbol id="i-star-fill" viewBox="0 0 24 24"><g fill="currentColor"><rect x="6" y="6" width="12" height="12"/><rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"/></g></symbol>
+  <symbol id="i-rosette" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="50.0,2.0 57.8,10.8 68.4,5.7 72.2,16.7 83.9,16.1 83.3,27.8 94.3,31.6 89.2,42.2 98.0,50.0 89.2,57.8 94.3,68.4 83.3,72.2 83.9,83.9 72.2,83.3 68.4,94.3 57.8,89.2 50.0,98.0 42.2,89.2 31.6,94.3 27.8,83.3 16.1,83.9 16.7,72.2 5.7,68.4 10.8,57.8 2.0,50.0 10.8,42.2 5.7,31.6 16.7,27.8 16.1,16.1 27.8,16.7 31.6,5.7 42.2,10.8"/><circle cx="50" cy="50" r="31"/><rect x="29" y="29" width="42" height="42"/><rect x="29" y="29" width="42" height="42" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="7"/></g></symbol>
+  <symbol id="i-medal" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.2"><rect x="17" y="17" width="66" height="66" rx="4"/><rect x="17" y="17" width="66" height="66" rx="4" transform="rotate(45 50 50)"/></g></symbol>
+  <symbol id="i-mosque" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v2.2M7.2 12.5c0-3.3 2.3-5.2 4.8-6.8 2.5 1.6 4.8 3.5 4.8 6.8"/><path d="M6 12.5h12V21H6z"/><path d="M10.2 21v-3.2a1.8 1.8 0 0 1 3.6 0V21M3 21V10l1-1.8L5 10v11M21 21V10l-1-1.8L19 10v11M1.5 21h21"/></g></symbol>
+  <symbol id="i-prayer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V10a6.5 6.5 0 0 1 13 0v11z"/><path d="M9 21v-7.5a3 3 0 0 1 6 0V21M3.5 21h17"/></g></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5h18a9 9 0 0 1-18 0z"/><path d="M8.5 20.5h7M14.5 8.5l5.5-6M11.5 8.5l4.5-6"/></g></symbol>
+  <symbol id="i-grocery" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5h18l-2 11H5z"/><path d="M8 9.5l4-6 4 6M9.5 13.5v3.5M14.5 13.5v3.5"/></g></symbol>
+</svg>
 <a class="skip" href="#directory">Skip to the directory</a>
 
 <header class="site-head">
   <div class="wrap head-row">
     <a class="brand" href="#top" aria-label="Tokyo Muslim Club, home">
-      <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="none" stroke="#d4a959" stroke-opacity=".6"/><path d="M16 6A10 10 0 1 0 16 26A12 12 0 0 1 16 6Z" fill="#d4a959"/></svg>
-      <span><span class="brand-name">Tokyo Muslim Club</span><span class="brand-jp" lang="ja">東京ムスリム・ガイド</span></span>
+      <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#i-rosette"/></svg>
+      <span><span class="brand-name">Tokyo Muslim Club</span><span class="brand-sub">Halal guide · Kanto</span></span>
     </a>
     <nav class="nav" id="siteNav" aria-label="Sections">
-      <a href="#prayer">Prayer times</a>
+      <a href="#prayer">Prayer</a>
       <a href="#directory">Directory</a>
       <a href="#essentials">Essentials</a>
-      <a href="#changes">What changed</a>
+      <a href="#changes">Edition notes</a>
     </nav>
     <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch light or dark theme">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
     </button>
     <button class="icon-btn" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero">
+  <section class="night hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow" style="color:var(--kin-bright)">Tokyo · Yokohama · Kanto</p>
-        <h1 style="margin-top:14px">Halal Tokyo, <em>checked by hand.</em></h1>
-        <p class="hero-lede">Mosques, prayer rooms and halal restaurants across Tokyo and Kanto. Every listing was re-checked in <span data-last-checked></span> and links to its sources. Closed places are removed, and anything uncertain is marked.</p>
+        <p class="salam"><span lang="ar" dir="rtl">السلام عليكم</span><small>Welcome to Tokyo</small></p>
+        <h1>Halal Tokyo, <em>verified place by place.</em></h1>
+        <p class="hero-lede">Mosques, prayer rooms and halal tables across Tokyo, Yokohama and the wider Kanto region. Every listing was re-checked in <span data-last-checked></span>, carries its sources, and tells you plainly when to call ahead.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#directory">Browse the directory</a>
-          <a class="btn btn-ghost" href="#prayer">Today's prayer times</a>
+          <a class="btn btn-gold" href="#directory">Explore the directory</a>
+          <a class="btn btn-line" href="#prayer">Today's prayer times</a>
         </div>
         <div class="stats">
           <div class="stat"><b data-count="mosque">0</b><a href="#directory" data-jump="mosque">Mosques</a></div>
           <div class="stat"><b data-count="prayer">0</b><a href="#directory" data-jump="prayer">Prayer rooms</a></div>
-          <div class="stat"><b data-count="food">0</b><a href="#directory" data-jump="food">Places to eat</a></div>
-          <div class="stat"><b id="statAreas">0</b><span>Areas covered</span></div>
+          <div class="stat"><b data-count="food">0</b><a href="#directory" data-jump="food">Halal dining</a></div>
+          <div class="stat"><b id="statAreas">0</b><span>Areas</span></div>
         </div>
       </div>
-      <aside class="prayer-card" aria-label="Next prayer">
-        <div class="pc-top"><span id="prayerCity">Tokyo</span><span>JST <b id="jstClock" style="font-variant-numeric:tabular-nums">--:--</b></span></div>
-        <p class="pc-label">Next prayer</p>
-        <p class="pc-next" id="heroNext">—</p>
-        <p class="pc-count" id="heroCountdown" aria-live="off"></p>
-        <div class="pc-foot"><span id="todayDate"></span><a href="#prayer">All times &amp; Qibla</a></div>
+
+      <aside class="mihrab" aria-label="Next prayer">
+        <div class="mihrab-frame">
+          <svg class="finial" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg>
+          <div class="mihrab-inner">
+            <svg class="rosette" viewBox="0 0 100 100" aria-hidden="true"><use href="#i-rosette"/></svg>
+            <p class="m-city"><span id="prayerCity">Tokyo</span> · JST <span id="jstClock" style="font-variant-numeric:tabular-nums">--:--</span></p>
+            <p class="m-label" lang="ar" dir="rtl">الصلاة القادمة</p>
+            <p class="m-name" id="heroNext">—</p>
+            <p class="m-time" id="heroNextTime">--:--</p>
+            <p class="m-count" id="heroCountdown"></p>
+            <div class="m-foot"><span id="todayDate"></span><a href="#prayer">All times &amp; Qibla</a></div>
+          </div>
+        </div>
       </aside>
     </div>
   </section>
 
-  <section class="band" id="prayer">
+  <section class="night band prayer-band" id="prayer">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Prayer times · Japan Standard Time</p>
+        <span class="ar-word" lang="ar" dir="rtl">الصلاة</span>
+        <p class="kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg>Prayer times · Japan Standard Time</p>
         <h2>Today in <span id="prayerCityTitle">Kanto</span></h2>
-        <p>Times are calculated on your device for the city you pick. Choose the method your community follows. Tokyo Camii follows the Diyanet times.</p>
+        <p>Calculated on your device for the city you choose. Pick the convention your community follows. Tokyo Camii follows the Diyanet times.</p>
       </div>
       <div class="controls">
         <label class="field" for="citySelect">City<select id="citySelect"></select></label>
@@ -351,11 +434,12 @@ select:hover, input[type="search"]:hover { border-color: var(--kin); }
       <div class="prayer-layout">
         <div>
           <ol class="prayer-grid" id="prayerGrid" aria-label="Prayer times"></ol>
-          <p class="method-note">Next: <b id="nextName">—</b> at <b id="nextTime">--:--</b>, in <span id="nextCountdown" style="font-variant-numeric:tabular-nums">—</span>. Method: <span id="methodName"></span>. These are calculated times. For Jumu'ah and congregational prayers, follow your mosque's timetable.</p>
+          <p class="method-note">Next is <b id="nextName">—</b> at <b id="nextTime">--:--</b>, in <span id="nextCountdown" style="font-variant-numeric:tabular-nums">—</span>. Method: <span id="methodName"></span>. These are calculated times. For Jumu'ah and congregation, follow your mosque's timetable.</p>
         </div>
         <div class="qibla" aria-label="Qibla direction">
-          <p class="eyebrow">Qibla from <span data-city-echo>here</span></p>
+          <p class="kicker"><span class="ar" lang="ar">القبلة</span> Qibla · <span data-city-echo>here</span></p>
           <div class="compass" role="img" aria-label="Compass showing the Qibla bearing">
+            <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"><circle cx="50" cy="50" r="45"/><circle cx="50" cy="50" r="41" stroke-dasharray="1 3.22"/></g><use href="#i-rosette" x="22" y="22" width="56" height="56" opacity=".3"/></svg>
             <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
             <i id="qiblaNeedle"></i>
           </div>
@@ -369,26 +453,27 @@ select:hover, input[type="search"]:hover { border-color: var(--kin); }
   <section class="band" id="directory">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Directory · checked <span data-last-checked></span></p>
-        <h2>Where to pray and eat</h2>
-        <p>Certification is not the same everywhere, so every restaurant carries one of three labels. Check the certificate on the wall if it matters to you. Places marked <b>Confirm before visiting</b> have conflicting or older sources.</p>
+        <span class="ar-word" lang="ar" dir="rtl">الدليل</span>
+        <p class="kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg>The directory · checked <span data-last-checked></span></p>
+        <h2>Where to pray, eat and shop</h2>
+        <p>Halal certification varies in Japan, so every restaurant carries one of three labels. If it matters to you, ask to see the certificate. Places marked <b style="font-weight:500">Confirm before visiting</b> have conflicting or older sources.</p>
       </div>
       <div class="legend" aria-label="Label meanings">
-        <div><span class="badge b-full">Fully halal</span> Entire menu halal or a certified kitchen</div>
-        <div><span class="badge b-menu">Certified halal menu</span> Certified dishes, but the venue may serve alcohol or non-halal food</div>
-        <div><span class="badge b-friendly">Muslim-friendly</span> Halal meat or pork-free, certification not confirmed</div>
+        <div><span class="badge b-full">Fully halal</span>The entire menu is halal, or the kitchen is certified.</div>
+        <div><span class="badge b-menu">Certified halal menu</span>Certified dishes or courses. The venue may also serve alcohol or non-halal food.</div>
+        <div><span class="badge b-friendly">Muslim-friendly</span>Halal meat or pork-free, but certification is not confirmed.</div>
       </div>
 
       <div class="toolbar">
         <div class="chips" role="group" aria-label="Type of place">
-          <button class="chip" type="button" data-type="all" aria-pressed="true">Everything <small data-count="all"></small></button>
-          <button class="chip" type="button" data-type="mosque" aria-pressed="false">Mosques <small data-count="mosque"></small></button>
-          <button class="chip" type="button" data-type="prayer" aria-pressed="false">Prayer rooms <small data-count="prayer"></small></button>
-          <button class="chip" type="button" data-type="food" aria-pressed="false">Halal dining <small data-count="food"></small></button>
-          <button class="chip" type="button" data-type="grocery" aria-pressed="false">Groceries <small data-count="grocery"></small></button>
+          <button class="chip" type="button" data-type="all" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg>Everything <small data-count="all"></small></button>
+          <button class="chip" type="button" data-type="mosque" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mosque"/></svg>Mosques <small data-count="mosque"></small></button>
+          <button class="chip" type="button" data-type="prayer" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-prayer"/></svg>Prayer rooms <small data-count="prayer"></small></button>
+          <button class="chip" type="button" data-type="food" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-food"/></svg>Halal dining <small data-count="food"></small></button>
+          <button class="chip" type="button" data-type="grocery" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-grocery"/></svg>Groceries <small data-count="grocery"></small></button>
         </div>
         <div class="filters">
-          <input type="search" id="search" placeholder="Search: ramen, Asakusa, wudu, Jumu'ah…" aria-label="Search places">
+          <input type="search" id="search" placeholder="Search ramen, Asakusa, wudu, Jumu'ah…" aria-label="Search places">
           <select id="regionSelect" aria-label="Area"><option value="all">All areas</option></select>
           <label class="toggle" id="fullOnlyWrap" for="fullOnly"><input type="checkbox" id="fullOnly"> Fully halal restaurants only</label>
           <span class="result-count" id="resultCount" aria-live="polite"></span>
@@ -398,28 +483,31 @@ select:hover, input[type="search"]:hover { border-color: var(--kin); }
     </div>
   </section>
 
+  <div class="wrap ornament" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#i-rosette"/></svg></div>
+
   <section class="band" id="essentials">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Essentials</p>
+        <span class="ar-word" lang="ar" dir="rtl">الزاد</span>
+        <p class="kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg>Essentials for the journey</p>
         <h2>Ask, read the label, find the stamp</h2>
-        <p>Show these to staff, check convenience-store labels, and know which halal certifiers you will see on restaurant walls in Japan.</p>
+        <p>Phrases to show staff, a decoder for convenience-store labels, and the halal certifiers you will see on restaurant walls in Japan.</p>
       </div>
       <div class="ess-grid">
         <div>
           <h3 class="sub-h">Show-to-staff phrases</h3>
           <p class="sub-p">Tap copy, then show the Japanese on your screen.</p>
           <div class="phrases">
-            <div class="phrase"><p class="phrase-en">I am Muslim. I cannot eat pork or drink alcohol.</p><p class="phrase-jp" lang="ja">私はムスリムです。豚肉とお酒は口にできません。</p><p class="phrase-ro">Watashi wa Musurimu desu. Butaniku to osake wa kuchi ni dekimasen.</p><button class="btn btn-ghost" type="button" data-phrase="私はムスリムです。豚肉とお酒は口にできません。">Copy Japanese</button></div>
-            <div class="phrase"><p class="phrase-en">Does this contain pork, lard, or gelatin?</p><p class="phrase-jp" lang="ja">これには豚肉、ラード、ゼラチンが入っていますか？</p><p class="phrase-ro">Kore ni wa butaniku, rādo, zerachin ga haitte imasu ka?</p><button class="btn btn-ghost" type="button" data-phrase="これには豚肉、ラード、ゼラチンが入っていますか？">Copy Japanese</button></div>
-            <div class="phrase"><p class="phrase-en">Is mirin, cooking sake or alcohol used in the sauce or soup?</p><p class="phrase-jp" lang="ja">タレやスープに、みりん・料理酒・お酒は使われていますか？</p><p class="phrase-ro">Tare ya sūpu ni, mirin, ryōrishu, osake wa tsukawarete imasu ka?</p><button class="btn btn-ghost" type="button" data-phrase="タレやスープに、みりん・料理酒・お酒は使われていますか？">Copy Japanese</button></div>
-            <div class="phrase"><p class="phrase-en">Is this meat halal-certified? May I see the certificate?</p><p class="phrase-jp" lang="ja">このお肉はハラール認証のものですか？認証書を見せていただけますか？</p><p class="phrase-ro">Kono oniku wa harāru ninshō no mono desu ka? Ninshōsho o misete itadakemasu ka?</p><button class="btn btn-ghost" type="button" data-phrase="このお肉はハラール認証のものですか？認証書を見せていただけますか？">Copy Japanese</button></div>
-            <div class="phrase"><p class="phrase-en">Is there a quiet place where I can pray for about 10 minutes?</p><p class="phrase-jp" lang="ja">10分ほどお祈りできる静かな場所はありますか？</p><p class="phrase-ro">Juppun hodo oinori dekiru shizuka na basho wa arimasu ka?</p><button class="btn btn-ghost" type="button" data-phrase="10分ほどお祈りできる静かな場所はありますか？">Copy Japanese</button></div>
+            <div class="phrase"><p class="phrase-en">I am Muslim</p><p class="phrase-jp" lang="ja">私はムスリムです。豚肉とお酒は口にできません。</p><p class="phrase-ro">I cannot eat pork or drink alcohol.</p><button class="btn btn-ghost btn-sm" type="button" data-phrase="私はムスリムです。豚肉とお酒は口にできません。">Copy</button></div>
+            <div class="phrase"><p class="phrase-en">Pork, lard, gelatin</p><p class="phrase-jp" lang="ja">これには豚肉、ラード、ゼラチンが入っていますか？</p><p class="phrase-ro">Does this contain pork, lard or gelatin?</p><button class="btn btn-ghost btn-sm" type="button" data-phrase="これには豚肉、ラード、ゼラチンが入っていますか？">Copy</button></div>
+            <div class="phrase"><p class="phrase-en">Alcohol in cooking</p><p class="phrase-jp" lang="ja">タレやスープに、みりん・料理酒・お酒は使われていますか？</p><p class="phrase-ro">Is mirin, cooking sake or alcohol used in the sauce or soup?</p><button class="btn btn-ghost btn-sm" type="button" data-phrase="タレやスープに、みりん・料理酒・お酒は使われていますか？">Copy</button></div>
+            <div class="phrase"><p class="phrase-en">Halal certificate</p><p class="phrase-jp" lang="ja">このお肉はハラール認証のものですか？認証書を見せていただけますか？</p><p class="phrase-ro">Is this meat halal-certified? May I see the certificate?</p><button class="btn btn-ghost btn-sm" type="button" data-phrase="このお肉はハラール認証のものですか？認証書を見せていただけますか？">Copy</button></div>
+            <div class="phrase"><p class="phrase-en">A place to pray</p><p class="phrase-jp" lang="ja">10分ほどお祈りできる静かな場所はありますか？</p><p class="phrase-ro">Is there a quiet place where I can pray for about 10 minutes?</p><button class="btn btn-ghost btn-sm" type="button" data-phrase="10分ほどお祈りできる静かな場所はありますか？">Copy</button></div>
           </div>
         </div>
         <div>
           <h3 class="sub-h">Ingredient label decoder</h3>
-          <p class="sub-p">Ingredients are listed under 原材料名 (genzairyō-mei) on the back of packs.</p>
+          <p class="sub-p">Ingredients are listed under <span lang="ja" style="font-family:var(--f-jp)">原材料名</span> (genzairyō-mei) on the back of packs.</p>
           <div class="labels">
             <input type="search" id="labelSearch" placeholder="Filter: pork, gelatin, 乳化剤…" aria-label="Filter ingredients">
             <div class="label-row"><div><div class="label-kanji" lang="ja">豚肉・豚・ポーク</div><div class="label-ro">butaniku · buta · pōku — pork</div></div><span class="verdict v-no">Avoid</span></div>
@@ -435,53 +523,64 @@ select:hover, input[type="search"]:hover { border-color: var(--kin); }
           </div>
         </div>
       </div>
-      <div class="certs" aria-label="Halal certifiers seen in Japan">
-        <div class="cert"><b>Japan Halal Foundation</b><span>Linked to Masjid Assalam, Okachimachi. Many Ueno and Asakusa shops.</span></div>
-        <div class="cert"><b>Japan Islamic Trust</b><span>Otsuka Mosque's organisation. Certifies restaurants and products.</span></div>
-        <div class="cert"><b>Nippon Asia Halal Association</b><span>NAHA, a Tokyo-based certifier for restaurants and food makers.</span></div>
-        <div class="cert"><b>Japan Halal Association</b><span>JHA, Osaka-based. Recognised by JAKIM.</span></div>
-        <div class="cert"><b>Malaysia Halal Corporation</b><span>Certifies some wagyu courses in Tokyo.</span></div>
-        <div class="cert"><b>Japan Muslim Association</b><span>Japan's oldest Muslim organisation, founded 1952.</span></div>
+      <div class="certs-wrap">
+        <h3 class="sub-h">Certifiers you will see in Japan</h3>
+        <p class="sub-p">Look for these names on the certificate by the entrance or the register.</p>
+        <div class="certs">
+          <div class="cert"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><b>Japan Halal Foundation</b><span>Linked to Masjid Assalam, Okachimachi. Common in Ueno and Asakusa.</span></div>
+          <div class="cert"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><b>Japan Islamic Trust</b><span>Otsuka Mosque's organisation. Certifies restaurants and products.</span></div>
+          <div class="cert"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><b>Nippon Asia Halal Association</b><span>NAHA, a Tokyo-based certifier for restaurants and food makers.</span></div>
+          <div class="cert"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><b>Japan Halal Association</b><span>JHA, Osaka-based. Recognised by JAKIM.</span></div>
+          <div class="cert"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><b>Malaysia Halal Corporation</b><span>Certifies some wagyu courses in Tokyo.</span></div>
+          <div class="cert"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><b>Japan Muslim Association</b><span>Japan's oldest Muslim organisation, founded 1952.</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="changes">
+  <section class="band" id="changes" style="padding-top:0">
     <div class="wrap">
+      <div class="ornament" aria-hidden="true" style="margin-bottom:80px"><svg viewBox="0 0 100 100"><use href="#i-rosette"/></svg></div>
       <div class="sec-head">
-        <p class="eyebrow">Edition notes · <span data-last-checked></span></p>
+        <span class="ar-word" lang="ar" dir="rtl">الأمانة</span>
+        <p class="kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg>Edition notes · <span data-last-checked></span></p>
         <h2>What changed in this edition</h2>
-        <p>The previous version of this guide had closed restaurants, a few places that could not be found anywhere, and wrong addresses. Here is what we removed and fixed, so you can trust what is left.</p>
+        <p>The previous edition had closed restaurants, places that could not be found anywhere, and wrong addresses. Here is everything we removed and fixed.</p>
       </div>
       <div class="changes-grid">
         <div>
-          <h3 class="log-h"><i class="dot" style="background:var(--warn)"></i>Removed</h3>
-          <ul class="log" id="removedList"></ul>
+          <h3 class="log-h"><svg viewBox="0 0 24 24" style="color:var(--warn)" aria-hidden="true"><use href="#i-star-fill"/></svg>Removed</h3>
+          <ol class="log" id="removedList"></ol>
         </div>
         <div>
-          <h3 class="log-h"><i class="dot" style="background:var(--ok)"></i>Corrected</h3>
-          <ul class="log" id="correctedList"></ul>
+          <h3 class="log-h"><svg viewBox="0 0 24 24" style="color:var(--turq)" aria-hidden="true"><use href="#i-star-fill"/></svg>Corrected</h3>
+          <ol class="log" id="correctedList"></ol>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="suggest">
+  <section class="suggest-band" id="suggest">
     <div class="wrap">
-      <div class="suggest">
-        <div>
-          <h2>Know a place we're missing?</h2>
-          <p>Tell us about a new halal restaurant, a prayer room in a mall, or a place that has closed. Include a link or a photo of the certificate and we will check it before adding it.</p>
-        </div>
-        <a class="btn btn-primary" href="https://github.com/mattappsaibagus-wq/tokyomuslim.github.io/issues/new?title=Suggestion%3A%20&amp;body=Name%3A%0AAddress%3A%0AType%20(mosque%20%2F%20prayer%20room%20%2F%20restaurant)%3A%0AHalal%20certifier%20(if%20any)%3A%0ASource%20link%3A%0A" target="_blank" rel="noopener">Suggest a place</a>
+      <div class="night suggest">
+        <svg class="rosette" viewBox="0 0 100 100" aria-hidden="true"><use href="#i-rosette"/></svg>
+        <p class="kicker">Help keep it accurate</p>
+        <h2>Know a place we're missing?</h2>
+        <p>Tell us about a new halal restaurant, a prayer room in a mall, or a place that has closed. Include a link or a photo of the certificate and we will check it before it goes in.</p>
+        <a class="btn btn-gold" href="https://github.com/mattappsaibagus-wq/tokyomuslim.github.io/issues/new?title=Suggestion%3A%20&amp;body=Name%3A%0AAddress%3A%0AType%20(mosque%20%2F%20prayer%20room%20%2F%20restaurant)%3A%0AHalal%20certifier%20(if%20any)%3A%0ASource%20link%3A%0A" target="_blank" rel="noopener">Suggest a place</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="wrap site-foot">
-  <p><b>Before you go:</b> opening hours, certification and prayer-room access change often. Listings are checked in good faith against public sources, but always confirm with the venue. Prayer times are calculated. Follow your local mosque for congregational prayers.</p>
-  <p>Content CC BY 4.0 · Code MIT · Tokyo Muslim Club is an independent community guide and is not affiliated with any mosque, certifier or restaurant listed.</p>
+<footer class="night site-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p><b style="color:var(--night-ink);font-weight:500">Before you go:</b> opening hours, certification and prayer-room access change often. Listings are checked in good faith against public sources, but always confirm with the venue. Prayer times are calculated. Follow your local mosque for congregational prayers.</p>
+      <p>Content CC BY 4.0 · Code MIT · Tokyo Muslim Club is an independent community guide, not affiliated with any mosque, certifier or restaurant listed.</p>
+    </div>
+    <p class="foot-ar" lang="ar" dir="rtl">جزاكم الله خيرًا<small dir="ltr">May God reward you with good</small></p>
+  </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

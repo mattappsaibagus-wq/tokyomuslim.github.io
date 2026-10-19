@@ -234,7 +234,8 @@
     $('#nextName').textContent = next[1];
     $('#nextTime').textContent = hhmm(nextTime % 24);
     $('#nextCountdown').textContent = cd;
-    $('#heroNext').textContent = next[1] + ' ' + hhmm(nextTime % 24);
+    $('#heroNext').textContent = next[1];
+    $('#heroNextTime').textContent = hhmm(nextTime % 24);
     $('#heroCountdown').textContent = 'in ' + cd;
     $('#jstClock').textContent = String(now.hour).padStart(2, '0') + ':' + String(now.minute).padStart(2, '0');
     $('#prayerCity').textContent = city.name;
@@ -291,7 +292,8 @@
     var t = TYPE[p.type], h = p.halal ? HALAL[p.halal] : null;
     var eyebrow = t.label + (p.cuisine ? ' · ' + p.cuisine : '');
     var html = '<article class="card card-' + p.type + '" id="' + esc(p.id) + '">';
-    html += '<header class="card-head"><p class="eyebrow">' + esc(eyebrow) + '</p>';
+    html += '<header class="card-head"><span class="medal" aria-hidden="true"><svg class="m-bg" viewBox="0 0 100 100"><use href="#i-medal"/></svg><svg class="m-ic" viewBox="0 0 24 24"><use href="#i-' + p.type + '"/></svg></span>';
+    html += '<p class="card-eyebrow">' + esc(eyebrow) + '</p>';
     html += '<h3 class="card-title">' + esc(p.name) + '</h3>';
     if (p.jp) html += '<p class="card-jp" lang="ja">' + esc(p.jp) + '</p>';
     html += '<div class="badges">';
@@ -309,11 +311,11 @@
     if (p.phone) html += '<div><dt>Phone</dt><dd><a href="tel:' + esc(p.phone.replace(/[^+\d]/g, '')) + '">' + esc(p.phone) + '</a></dd></div>';
     html += '</dl>';
     if (p.tags && p.tags.length) html += '<ul class="tags">' + p.tags.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
-    if (p.note) html += '<p class="note' + (p.check ? ' note-check' : '') + '"><span aria-hidden="true">' + (p.check ? '!' : 'i') + '</span>' + esc(p.note) + '</p>';
+    if (p.note) html += '<p class="note' + (p.check ? ' note-check' : '') + '"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg><span>' + esc(p.note) + '</span></p>';
     html += '<footer class="card-foot">';
-    html += '<a class="btn btn-primary" href="' + mapsUrl(p) + '" target="_blank" rel="noopener">Open in Maps</a>';
-    if (p.jpAddress) html += '<button class="btn btn-ghost" type="button" data-copy="' + esc(p.jpAddress) + '">Copy address for taxi</button>';
-    if (p.web) html += '<a class="btn btn-ghost" href="' + esc(p.web) + '" target="_blank" rel="noopener">Website</a>';
+    html += '<a class="btn btn-solid btn-sm" href="' + mapsUrl(p) + '" target="_blank" rel="noopener">Open in Maps</a>';
+    if (p.jpAddress) html += '<button class="btn btn-ghost btn-sm" type="button" data-copy="' + esc(p.jpAddress) + '">Copy address for taxi</button>';
+    if (p.web) html += '<a class="btn btn-ghost btn-sm" href="' + esc(p.web) + '" target="_blank" rel="noopener">Website</a>';
     html += '</footer>';
     if (p.src && p.src.length) {
       html += '<p class="sources">Sources: ' + p.src.map(function (s) {
@@ -350,7 +352,7 @@
     items.forEach(function (p) {
       if (p.region !== lastRegion) {
         if (lastRegion !== null) html += '</div>';
-        html += '<h3 class="region-head"><span>' + esc(REGIONS[p.region]) + '</span></h3><div class="cards">';
+        html += '<div class="region-head"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star-fill"/></svg><h3>' + esc(REGIONS[p.region]) + '</h3></div><div class="cards">';
         lastRegion = p.region;
       }
       html += card(p);
