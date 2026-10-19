@@ -1,187 +1,62 @@
-# Tokyo Halal Guide
+# Tokyo Muslim Club
 
-A premium, zero-dependency static website for Muslim travelers in Tokyo, Osaka, Kyoto, and beyond. Features live astronomical prayer times with a 13-method calculator, verified halal dining with interactive Google Maps, Japanese phrasebook, kanji label decoder, currency converter, 3-day itinerary, and a trip-planning concierge.
+A static guide to mosques, prayer rooms and halal food in Tokyo, Yokohama and the Kanto region.
+Live at **https://tokyomuslim.club/**.
 
-**Live site:** https://tokyomuslim.club/
-**GitHub repo:** https://github.com/mattappsaibagus-wq/tokyomuslim.github.io
+- `index.html` — the page (styles inline)
+- `assets/places.js` — every listing, with sources. **Edit this file to add or fix a place.**
+- `assets/app.js` — prayer-time engine, Qibla bearing and directory filters (no dependencies)
+- `mosques.html`, `halal-food.html`, `guide.html` — redirects from the old URLs
 
----
+## Adding a place
 
-## ✨ Key Features
+Copy an entry in `assets/places.js`, keep the same fields, and add at least one source link in `src`.
+Set `check: true` with a `note` when sources disagree or are more than ~2 years old.
+For restaurants, `halal` is one of:
 
-| Feature | Description |
-|---------|-------------|
-| **Live Prayer Engine** | Astronomically-precise Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha for Tokyo, Osaka, Kyoto (solar declination + equation of time) with live countdown & active prayer highlighting |
-| **13 Worldwide Calculation Methods** | Muslim World League, ISNA, Egyptian, Umm al-Qura, Karachi, Dubai, Kuwait, KEMENAG, JAKIM, Diyanet, Shia Jafari, UOIF — switch to match your home convention |
-| **Halal Directory** | 18+ verified venues across Tokyo, Osaka, Kyoto, Kobe — A5 Wagyu, Ramen, Sushi, Mosques, Prayer Rooms, Airport facilities |
-| **Interactive Maps** | One-click Google Maps navigation, phone dialers, Japanese address copy-for-taxi |
-| **Phrasebook & Kanji Decoder** | 20+ show-to-staff Japanese cards + searchable ingredient kanji lookup (pork, lard, gelatin, mirin, emulsifiers, agar) |
-| **Currency Converter** | Live mid-market rates for USD, EUR, GBP, AUD, SGD, MYR, IDR, SAR, AED → JPY |
-| **3-Day Itinerary** | Curated day-by-day Tokyo plan with prayer stops, halal meals, and sightseeing |
-| **Contact Concierge** | Mailto-based form for private halal drivers, group packages, trip planning — works on static hosting |
-| **Multi-City** | City selector for prayer times (Tokyo / Osaka / Kyoto) |
-| **Light/Dark Mode** | System preference + manual toggle, persisted in localStorage |
-| **Accessibility** | Skip-link, universal `focus-visible`, `prefers-reduced-motion`, aria-labelled controls, keyboard-operable mobile menu |
+| value      | meaning |
+|------------|---------|
+| `full`     | whole menu halal or certified kitchen |
+| `menu`     | certified halal dishes/courses; venue may also serve alcohol or non-halal food |
+| `friendly` | halal meat or pork-free, certification not confirmed |
 
----
+## Prayer times
 
-## 📁 Project Structure
+Calculated in the browser with the standard astronomical method (sun declination and equation of time
+from the Julian date; Dhuhr at solar noon; Asr from shadow length; Fajr/Isha from the method's angles).
+Supported methods: MWL, Diyanet, JAKIM, KEMENAG, MUIS, Karachi, Egyptian, Umm al-Qura, ISNA, Jafari, with a Hanafi Asr option.
 
-```
-tokyo-muslim-guide/
-├── index.html          # Single-file production site (all content + CSS + JS)
-├── verify.sh           # Integrity & replica health-check (SHA-256 + JS harness)
-├── css/
-│   └── style.css       # Legacy design system (emerald & gold theme) — now deprecated
-├── js/
-│   ├── data.js         # Legacy content arrays — deprecated
-│   └── main.js         # Legacy rendering — deprecated
-├── netlify.toml        # Netlify deploy config + security headers
-└── LICENSE             # CC BY 4.0 (content) + MIT (code)
-```
-
-> **Note:** The entire site is now self-contained in `index.html` (no external CSS/JS dependencies). The `css/` and `js/` folders are legacy and no longer used.
-
----
-
-## 🚀 Local Preview
-
-No build step required. Just serve the file:
+Quick check from the command line:
 
 ```bash
-# From tokyo-muslim-guide/ directory
-python3 -m http.server 8765
-# Then open http://localhost:8765
+node -e "const a=require('./assets/app.js');console.log(a.prayerTimes(2026,6,21,a.CITIES.tokyo,a.METHODS.mwl,false))"
 ```
 
-Or simply double-click `index.html` in your file browser.
+## Hosting (free)
 
----
+This is a plain static site with no build step. It is served free by **GitHub Pages** from the `main`
+branch of this repo (`CNAME` = `tokyomuslim.club`), so it uses no Netlify credits.
 
-## 🌐 Publishing for Free
+DNS at the registrar for GitHub Pages:
 
-This is a single plain `index.html` — it works on **any** static host:
+| Type  | Host  | Value |
+|-------|-------|-------|
+| A     | `@`   | `185.199.108.153` |
+| A     | `@`   | `185.199.109.153` |
+| A     | `@`   | `185.199.110.153` |
+| A     | `@`   | `185.199.111.153` |
+| CNAME | `www` | `mattappsaibagus-wq.github.io` |
 
-### GitHub Pages (Current Host)
-Your repo is already configured at `mattappsaibagus-wq/tokyomuslim.github.io` with a `CNAME` pointing to `tokyomuslim.club`.
+Then in GitHub: **Settings → Pages → Source: Deploy from branch `main` / root**, custom domain
+`tokyomuslim.club`, and tick **Enforce HTTPS**.
 
-```bash
-# Just push to main — GitHub Pages auto-deploys
-git add index.html
-git commit -m "Update Tokyo Halal Guide"
-git push origin main
-```
+Local preview: `python3 -m http.server 8765` and open http://localhost:8765.
 
-### Netlify Drop (30 seconds)
-Drag the `tokyo-muslim-guide/` folder onto https://app.netlify.com/drop.
+## Disclaimer
 
-### Cloudflare Pages / Vercel
-Import the GitHub repo with "Other" framework preset (no build command, output dir = root).
+Hours, certification and prayer-room access change often. Listings are checked in good faith against public
+sources; always confirm with the venue. Prayer times are calculated; follow your local mosque for congregation.
 
----
+## License
 
-## 🌐 High-Availability & Replica Verification
-
-The site follows a **zero-build, zero-server** architecture: a single `index.html` served from multiple static hosts simultaneously. There is no build pipeline, no server-side logic, and no user data captured (analytics is the sole opt-in data stream).
-
-### Current Replica Status
-
-| Host | URL | Status | Notes |
-|------|-----|--------|-------|
-| **GitHub Pages + CDN** | https://tokyomuslim.club/ | ✔ Primary | Fastly global CDN, auto-HTTPS, CNAME verified |
-| **www alias** | https://www.tokyomuslim.club/ | → Redirects to root | 301 to `tokyomuslim.club` |
-| **Netlify Drop** | `rainbow-travesseiro-5c8ea7.netlify.app` | ⚠ Stale | Password-protected; refresh by re-dragging `index.html` onto https://app.netlify.com/drop |
-
-### Verifying Replicas
-
-```bash
-bash verify.sh
-```
-
-`verify.sh` compares the canonical `index.html` against every live replica using SHA-256 checksums and runs the prayer-engine JavaScript harness (234 ordering checks across all methods × cities × seasons). A byte-identical replica gets a ✔; a stale one gets a ⚠.
-
-### Adding a New Replica
-
-1. Push `index.html` to the new host (Cloudflare Pages, Vercel, Netlify, etc.)
-2. Add the URL to the `REPLICAS` array in `verify.sh`
-3. Run `bash verify.sh` — it will show ✔ if byte-identical to the canonical file
-
----
-
-## 🔧 Custom Domain & Subdomain Setup
-
-### Current: `tokyomuslim.club` → GitHub Pages
-
-Your Namecheap DNS already points to GitHub Pages:
-- **Nameservers:** `dns1.registrar-servers.com`, `dns2.registrar-servers.com` (Namecheap default)
-- **A records:** `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (GitHub Pages IPs)
-- **CNAME:** `www` → `mattappsaibagus-wq.github.io`
-
-### Option: Add `guide.tokyomuslim.club` Subdomain
-
-**In Namecheap (Advanced DNS tab):**
-| Type | Host | Value | TTL |
-|------|------|-------|-----|
-| CNAME | `guide` | `mattappsaibagus-wq.github.io` | Automatic |
-
-**In GitHub Pages Settings:**
-1. Go to repo **Settings → Pages → Custom domain**
-2. Add `guide.tokyomuslim.club` (and optionally `tokyomuslim.club` if not already there)
-3. Wait for "DNS check successful" → Enforce HTTPS ✓
-
-The subdomain will be live in ~10–30 minutes with free SSL.
-
----
-
-## 📊 Analytics (Add One to `<head>`)
-
-Uncomment **one** option in `index.html` (lines ~16–33):
-
-| Option | Privacy | Cost | Setup |
-|--------|---------|------|-------|
-| **Google Analytics (GA4)** | Standard | Free | Create GA4 property → replace `G-XXXXXXXXXX` |
-| **Umami** (cloud.umami.is) | GDPR-friendly, no cookies | Free/self-hosted | Create site → replace `YOUR_WEBSITE_ID` |
-| **Plausible** (plausible.io) | Privacy-first, <1KB | $9/mo or self-hosted | Add domain → replace `tokyomuslim.club` |
-| **GoatCounter** (goatcounter.com) | No cookies, open-source | Free | Create counter → replace `yourname` |
-
----
-
-## 🛠️ Customizing Content
-
-All content lives in `index.html` — edit directly:
-
-| Section | Search For |
-|---------|------------|
-| Venues (restaurants, mosques) | `data-category="mosque"` / `wagyu` / `ramen` / `sushi` |
-| Prayer cities | `const CITIES = {` |
-| Calculation methods | `const METHODS = {` |
-| Phrasebook cards | `class="phrase-card"` |
-| Kanji decoder items | `class="kanji-item"` |
-| Currency rates | `const RATES = {` |
-| Itinerary days | `id="itinerary"` |
-| Contact form email | `concierge@tokyomuslim.club` |
-
----
-
-## 📜 Disclaimer
-
-Opening hours, halal certifications, and prayer-space availability change over time. This guide is maintained in good faith — **always verify with the venue before visiting**.
-
-Prayer times are astronomical estimates; the site provides multiple calculation methods but cannot replace the guidance of your local mosque or trusted Islamic authority.
-
----
-
-## 📄 License
-
-- **Content** (text, listings): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — free to share and adapt with attribution.
-- **Code** (HTML/CSS/JS): [MIT](https://opensource.org/licenses/MIT) — free to reuse for any purpose.
-
----
-
-## 🙏 Credits
-
-- Prayer time algorithm: NOAA Solar Calculations / Umm al-Qura Hijri approximation
-- Prayer time calculation methods: Based on internationally recognized conventions (MWL, ISNA, Umm al-Qura, JAKIM, KEMENAG, etc.)
-- Fonts: Google Fonts (Cormorant Garamond, Playfair Display, Plus Jakarta Sans, Noto Serif JP)
-- Icons: Unicode emoji (no external assets)
-- Inspired by the community at [Tokyo Muslim Club](https://tokyomuslim.club/)
+Content: CC BY 4.0 · Code: MIT
